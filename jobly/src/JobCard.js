@@ -16,10 +16,12 @@ function JobCard({ job }) {
   return (
     <div className="JobCard">
       <p>JOB CARD</p>
-      {/* <p>{job.title}</p>
-      <p>{job.companyName}</p>
+      <p>{job.title}</p>
+      {job.companyName &&
+        <p>This is job companyName: {job.companyName}</p>
+      }
       <p>{job.salary}</p>
-      <p>{job.equity}</p> */}
+      <p>{job.equity}</p>
     </div>
   )
 }
