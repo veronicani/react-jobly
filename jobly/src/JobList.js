@@ -1,4 +1,5 @@
 import JobCardList from "./JobCardList";
+import SearchBar from "./SearchBar";
 
 /** JobList: Renders a list of jobs and search bar.
  *
@@ -13,9 +14,14 @@ import JobCardList from "./JobCardList";
 */
 
 function JobList({ filteredJobs }) {
+
+  function search(job) {
+    console.log("JobList search");
+  }
+  
   return (
     <div>
-      <h3>Search Bar!</h3>
+      <SearchBar search={search} />
       <JobCardList />
     </div>
   )
