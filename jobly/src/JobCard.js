@@ -3,15 +3,15 @@
 /** JobCard: presentational component, shows title of job, name of company,
  *  salary, and equity.
  *
- *  Props: job -> {id, salary, equity, title, name of company}
+ *  Props: job -> { id, salary, equity, title, companyHandle, companyName }
  *
  *  State: none
  *
  *  JobCardList -> JobCard
  */
 
-function JobCard({job}) {
-  console.log("JobCard renders: ", job);
+function JobCard({ job }) {
+  console.log("JobCard input: ", job);
 
   return (
     <div className="JobCard">
