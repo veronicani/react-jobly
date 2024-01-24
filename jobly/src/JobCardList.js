@@ -15,7 +15,9 @@ function JobCardList({ filteredJobs }) {
   return (
     <div>
       <p>JOB CARD LIST</p>
-      {/* <JobCard />  */}
+      <JobCard /> 
+      <JobCard /> 
+      <JobCard /> 
     </div>
   )
 }
