@@ -1,4 +1,4 @@
-import { useParams } from "react";
+import { useParams, Navigate } from "react-router-dom";
 
 /** CompanyDetail: logical component for single company. Makes a request to
  * Jobly API for data about a company.
@@ -13,7 +13,9 @@ import { useParams } from "react";
 
 function CompanyDetail() {
   const { handle } = useParams();
-  console.log('CompanyDetail handle:', handle);
+  // console.log('CompanyDetail handle:', handle);
+
+  if (!handle) return <Navigate to="/companies" />
 
   return (
     <div className="CompanyDetail">
