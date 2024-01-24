@@ -1,9 +1,12 @@
-
-
 /** JobCard: presentational component, shows title of job, name of company,
  *  salary, and equity.
  *
- *  Props: job -> { id, salary, equity, title, companyHandle, companyName }
+ *  Props: job
+ *  One of the following:
+ *   - from JobCardList: {id, salary, equity, title, companyHandle, companyName}
+ *   - from CompanyDetail: {id, salary, equity, title}
+ *
+ *  - job -> { id, salary, equity, title, companyHandle, companyName }
  *
  *  State: none
  *
@@ -15,13 +18,12 @@ function JobCard({ job }) {
 
   return (
     <div className="JobCard">
-      <p>JOB CARD</p>
-      <p>{job.title}</p>
+      <h3>{job.title}</h3>
       {job.companyName &&
         <p>This is job companyName: {job.companyName}</p>
       }
-      <p>{job.salary}</p>
-      <p>{job.equity}</p>
+      <p>Salary: {job.salary}</p>
+      <p>Equity: {job.equity}</p>
     </div>
   )
 }
