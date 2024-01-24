@@ -15,7 +15,7 @@ function CompanyDetail() {
   const { handle } = useParams();
   // console.log('CompanyDetail handle:', handle);
 
-  // TODO: currently here
+
 
   if (!handle) return <Navigate to="/companies" />
 
