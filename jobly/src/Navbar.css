@@ -1,3 +1,29 @@
-div.Navbar {
+.Navbar nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
 
+.Navbar nav ul li {
+  margin-left: 20px;
+}
+
+.Navbar nav ul li:hover {
+  background-color: lightcoral;
+}
+
+.Navbar nav ul li a.active {
+  color: blue;
+  background-color: green;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.Navbar nav ul li a {
+  text-decoration: none;
+}
+
+.Navbar nav a:visited {
+  color: blue;
 }
