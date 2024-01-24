@@ -13,7 +13,7 @@ import { useParams, Navigate } from "react-router-dom";
 
 function CompanyDetail() {
   const { handle } = useParams();
-  // console.log('CompanyDetail handle:', handle);
+  console.log('CompanyDetail handle:', handle);
 
 
 
