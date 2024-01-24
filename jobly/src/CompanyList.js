@@ -16,6 +16,37 @@ import SearchBar from "./SearchBar";
 */
 
 function CompanyList({ filteredCompanies }) {
+  const [searchTerm, setSearchTerm ] = useState("");
+  const [companyList, setCompanyList] = useState({
+    data: null,
+    isLoading: true,
+    errors: null,
+  });
+
+  console.log('CompanyList: ', companyList);
+
+  useEffect(function getFilteredCompanies() {
+    async function fetchCompanies() {
+      try {
+        const companiesData = await JoblyApi.getCompanies(searchTerm);
+        setCompanyList({
+          data: companiesData,
+          isLoading: false
+        });
+      } catch (err) {
+        setCompanyList({
+          data: null,
+          isLoading: false,
+          errors: err,
+        });
+      }
+    }
+    fetchCompanies();
+  }, [searchTerm]);
+
+
+
+
 
   function search(company) {
     console.log("CompanyList search");
