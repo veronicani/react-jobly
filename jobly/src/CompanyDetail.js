@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import JoblyApi from "./api";
+import JobCardList from "./JobCardList";
 
 /** CompanyDetail: logical component for single company. Makes a request to
  * Jobly API for data about a company.
@@ -8,7 +9,8 @@ import JoblyApi from "./api";
  *
  *  Props: none
  *
- *  State: TODO: update state to be companyDetail
+ *  State:
+ *  - companyDetail: { data: companyData, isLoading: boolean, errors: err obj }
  *
  *  RoutesList -> CompanyDetail -> JobCardList
  */
@@ -45,10 +47,14 @@ function CompanyDetail() {
   if (companyDetail.isLoading) return <i>Loading...</i>
   else if (companyDetail.errors) return <Navigate to="/companies" />
 
+  const { name, description, jobs } = companyDetail.data;
+
   return (
     <div className="CompanyDetail">
-      {/* TODO: company name, description, and list of jobs from the company. */}
       <h3>This is company detail.</h3>
+      <h3>Company Name: {name}</h3>
+      <h3>Company description: {description}</h3>
+      <JobCardList filteredJobs={jobs} />
     </div>
   );
 }
