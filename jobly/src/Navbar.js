@@ -17,6 +17,7 @@ function Navbar() {
         <NavLink to="/" className="Navbar-title">Jobly</NavLink>
         <ul>
           <li><NavLink to="/companies">Companies</NavLink></li>
+          <li><NavLink to="/companies/baker-santos">Baker Santos</NavLink></li>
           <li><NavLink to="/jobs">Jobs</NavLink></li>
         </ul>
       </nav>

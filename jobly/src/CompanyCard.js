@@ -8,7 +8,7 @@ import "./CompanyCard.css";
  *
  *  State: none
  *
- *  CompanyList -> CompanyCard
+ *  CompanyList -> CompanyCard 
  */
 
 function CompanyCard({ company }) {

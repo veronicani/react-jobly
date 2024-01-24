@@ -24,8 +24,10 @@ function CompanyDetail() {
     errors: null
   });
   console.log("CompanyDetail state: ", companyDetail);
-
+  //TODO: comment!
+  // useEffect only happens on first render, but not when handle changes
   useEffect(function fetchCompanyDataOnMount() {
+    console.log("CompanyDetail useEffect");
     async function fetchCompanyData() {
       try {
         const companyData = await JoblyApi.getCompany(handle);
@@ -42,7 +44,7 @@ function CompanyDetail() {
       }
     }
     fetchCompanyData();
-  }, []);
+  }, [handle]); //if there's a var in the cb fn, put in dependency list
 
   if (companyDetail.isLoading) return <i>Loading...</i>
   else if (companyDetail.errors) return <Navigate to="/companies" />
@@ -51,7 +53,7 @@ function CompanyDetail() {
 
   return (
     <div className="CompanyDetail">
-      <h3>Company Name: {name}</h3>
+      <h3>Company Name: {name} ({handle})</h3>
       <p>Company description: {description}</p>
       <JobCardList filteredJobs={jobs} />
     </div>

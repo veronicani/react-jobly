@@ -4,6 +4,7 @@ import JobCard from "./JobCard";
  *
  * Props:
  *   One of the following:
+ * //TODO: list what it NEEDS, to render (companyName is optional)
  *    - filteredJobs from JobList:
  *      [{ id, salary, equity, title, companyHandle, companyName }, ...]
  *

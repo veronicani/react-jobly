@@ -5,6 +5,7 @@ import "./JobCard.css";
  *
  *  Props:
  *  job - one of the following:
+ *  //TODO: list what it NEEDS, to render (companyName is optional)
  *   - from JobCardList: {id, salary, equity, title, companyHandle, companyName}
  *   - from CompanyDetail: {id, salary, equity, title}
  *
@@ -12,10 +13,10 @@ import "./JobCard.css";
  *
  *  JobCardList -> JobCard
  */
-
+//TODO: some jobs don't have salary/equity, use &&
 function JobCard({ job }) {
   console.log("JobCard input: ", job);
-
+  //TODO: destructure job
   return (
     <div className="JobCard">
       <h3>{job.title}</h3>

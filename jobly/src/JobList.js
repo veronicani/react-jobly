@@ -4,7 +4,6 @@ import JobCardList from "./JobCardList";
 import SearchBar from "./SearchBar";
 
 import JoblyApi from "./api";
-import { unstable_useViewTransitionState } from "react-router-dom";
 
 /** JobList: Renders a list of jobs and the search bar. Makes API request to
  * get all job data based on search terms.
@@ -30,6 +29,7 @@ function JobList() {
   console.log('JobList jobList state: ', jobList);
   console.log('JobList searchTerm state: ', searchTerm);
 
+  //TODO: comment!
   useEffect(function fetchFilteredJobsOnSearch() {
     async function fetchJobs() {
       try {
@@ -48,7 +48,8 @@ function JobList() {
     }
     fetchJobs();
   }, [searchTerm]);
-
+ 
+  //TODO: DOCSTRING!
   function search(job) {
     setJobList({data: null, isLoading: true, errors: null});
     setSearchTerm(job);

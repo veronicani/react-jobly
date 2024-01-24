@@ -12,7 +12,7 @@ import SearchBar from "./SearchBar";
  *
  *  State:
  *  - searchTerm: the search term submitted from the search bar.
- *  - filteredCompanies: [{handle, name, description, numEmployees, logoUrl}, ...]
+ *  - TODO: update! filteredCompanies: [{handle, name, description, numEmployees, logoUrl}, ...]
  *
  *  RoutesList -> CompanyList -> { CompanyCard, SearchBar }
 */
@@ -28,6 +28,7 @@ function CompanyList() {
   console.log('CompanyList companyList state: ', companyList);
   console.log('CompanyList searchTerm state: ', searchTerm);
 
+  //TODO: Good to comment what this is for
   useEffect(function fetchFilteredCompaniesOnSearch() {
     async function fetchCompanies() {
       try {
@@ -47,7 +48,7 @@ function CompanyList() {
     fetchCompanies();
   }, [searchTerm]);
 
-
+  //TODO: DOcstring! 
   function search(companyName) {
     setCompanyList({data: null, isLoading: true, errors: null})
     setSearchTerm(companyName);

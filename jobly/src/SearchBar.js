@@ -15,14 +15,15 @@ import { useState } from "react";
 function SearchBar({ search }) {
   const [term, setTerm] = useState("")
 
+  //TODO: DOCSTRING
   function handleChange(evt) {
-    setTerm(evt.target.value);
+    setTerm(evt.target.value); //TODO: use as cb pattern
   }
-
+  //TODO: DOCSTRING
   function handleSubmit(evt) {
     evt.preventDefault();
     search(term);
-    setTerm("");
+    setTerm(""); //TODO: nice to have the term stay in the search
   }
 
   return (
