@@ -48,7 +48,7 @@ class JoblyApi {
   /** Get list of companies. */
 
   static async getCompanies(searchTerm) {
-    const res = searchTerm 
+    const res = searchTerm
       ? await this.request('companies', {nameLike: searchTerm})
       : await this.request('companies');
 
@@ -67,8 +67,10 @@ class JoblyApi {
   /**  Get list of jobs. */
 
   static async getJobs(searchTerm) {
-    const params = new URLSearchParams({title: searchTerm});
-    const res = await this.request(`jobs/?${params}`);
+    const res = searchTerm
+       ? await this.request('jobs', {title: searchTerm})
+       : await this.request('jobs');
+
     return res.jobs;
   }
 
