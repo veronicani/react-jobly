@@ -1,5 +1,6 @@
 import CompanyCard from "./CompanyCard";
-import JoblyApi from "../../api";
+import JoblyApi from "./api";
+import SearchBar from "./SearchBar";
 
 /** CompanyList: logical, makes API request to Jobly API
  *
@@ -15,14 +16,16 @@ import JoblyApi from "../../api";
 
 function CompanyList({ filteredCompanies }) {
 
-  // function search(company) {
-  //   const companies = JoblyApi.getCompanies(searchTerm)
-  // }
+  function search(company) {
+    console.log("CompanyList search");
+    // const companies = JoblyApi.getCompanies(searchTerm)
+  }
 
   return (
     <div className="CompanyList">
-      <h3>Search Bar!</h3>
       <SearchBar search={search} />
+      <CompanyCard />
+      <CompanyCard />
       <CompanyCard />
     </div>
   );
