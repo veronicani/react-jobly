@@ -15,10 +15,11 @@ function JobCard({ job }) {
 
   return (
     <div className="JobCard">
-      <p>{job.title}</p>
+      <p>JOB CARD</p>
+      {/* <p>{job.title}</p>
       <p>{job.companyName}</p>
       <p>{job.salary}</p>
-      <p>{job.equity}</p>
+      <p>{job.equity}</p> */}
     </div>
   )
 }
