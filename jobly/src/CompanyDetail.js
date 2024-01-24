@@ -1,18 +1,19 @@
+import { useParams } from "react";
 
-
-
-/** ComponyDetail component: presentational component for single company
+/** CompanyDetail: logical component for single company. Makes a request to
+ * Jobly API for data about a company.
+ *  Renders company name, description, and list of jobs from the company.
  *
- *  Props: company obj -> {handle, name, description, numEmployees, logoUrl}
+ *  Props: none
  *
  *  State: none
  *
  *  RoutesList -> CompanyDetail -> JobCardList
  */
 
-function CompanyDetail({ company }) {
-
-  console.log('CompanyDetail input:', company);
+function CompanyDetail() {
+  const { handle } = useParams();
+  console.log('CompanyDetail handle:', handle);
 
   return (
     <div className="CompanyDetail">

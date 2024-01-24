@@ -1,8 +1,9 @@
-import CompanyCard from "./CompanyCard";
 import JoblyApi from "./api";
+import CompanyCard from "./CompanyCard";
 import SearchBar from "./SearchBar";
 
-/** CompanyList: logical, makes API request to Jobly API
+/** CompanyList: logical, makes API request to Jobly API. Renders the search
+ * bar and list of CompanyCards.
  *
  *  Props:
  *  - None

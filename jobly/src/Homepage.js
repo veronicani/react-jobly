@@ -1,6 +1,5 @@
 
 
-
 /** Homepage: component for landing page on Jobly app.
  *
  *  Props: None
@@ -18,6 +17,5 @@ function Homepage() {
     </div>
   );
 }
-
 
 export default Homepage;

@@ -1,7 +1,10 @@
+import { useEffect } from "react";
+
 import JobCardList from "./JobCardList";
 import SearchBar from "./SearchBar";
 
-/** JobList: Renders a list of jobs and search bar.
+/** JobList: Renders a list of jobs and the search bar. Makes API request to
+ * get all job data based on search terms.
  *
  * Props:
  * - none
@@ -13,8 +16,9 @@ import SearchBar from "./SearchBar";
  * RoutesList -> JobList -> { JobCardList, SearchBar }
 */
 
-function JobList({ filteredJobs }) {
-
+function JobList() {
+  //TODO: useEffect!
+  
   function search(job) {
     console.log("JobList search");
   }
