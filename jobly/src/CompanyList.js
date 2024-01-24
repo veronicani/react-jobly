@@ -45,7 +45,9 @@ function CompanyList({ filteredCompanies }) {
   }, [searchTerm]);
 
 
-
+  // TODO: implement search function, remove property from CompanyList, and
+  // return based on if it's loading, if there are errors, etc (like Company
+  // Detail pattern).
 
 
   function search(company) {
