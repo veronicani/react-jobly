@@ -1,8 +1,17 @@
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "./Navbar";
-import RoutesList from "./RoutesList";
 import './App.css';
 
+import Navbar from "./Navbar";
+import RoutesList from "./RoutesList";
+
+/** Jobly App.
+ * 
+ * Props: none
+ * 
+ * State: none
+ * 
+ * App -> { Navbar, RoutesList }
+ */
 function App() {
   return (
     <div className="App">
