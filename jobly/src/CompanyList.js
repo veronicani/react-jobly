@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
 import SearchBar from "./SearchBar";
@@ -15,7 +17,7 @@ import SearchBar from "./SearchBar";
  *  RoutesList -> CompanyList -> { CompanyCard, SearchBar }
 */
 
-function CompanyList({ filteredCompanies }) {
+function CompanyList() {
   const [searchTerm, setSearchTerm ] = useState("");
   const [companyList, setCompanyList] = useState({
     data: null,
@@ -23,7 +25,8 @@ function CompanyList({ filteredCompanies }) {
     errors: null,
   });
 
-  console.log('CompanyList: ', companyList);
+  console.log('CompanyList companyList state: ', companyList);
+  console.log('CompanyList searchTerm state: ', searchTerm);
 
   useEffect(function getFilteredCompanies() {
     async function fetchCompanies() {
@@ -45,15 +48,19 @@ function CompanyList({ filteredCompanies }) {
   }, [searchTerm]);
 
 
-  // TODO: implement search function, remove property from CompanyList, and
+  function search(companyName) {
+    console.log("CompanyList search");
+    setCompanyList({data: null, isLoading: true, errors: null})
+    setSearchTerm(companyName);
+  }
+
   // return based on if it's loading, if there are errors, etc (like Company
   // Detail pattern).
-
-
-  function search(company) {
-    console.log("CompanyList search");
-    // const companies = JoblyApi.getCompanies(searchTerm)
-  }
+  if (companyList.isLoading) return <i>Loading...</i>
+  else if (companyList.errors) return <i>No companies found.</i>
+  
+  console.log("companyList: ", companyList);
+  //TODO: handle [] by returning no companies found.
 
   return (
     <div className="CompanyList">
