@@ -48,14 +48,14 @@ class JoblyApi {
   /** Get list of companies. */
 
   static async getCompanies(searchTerm) {
-    console.log("getCompanies searchTerm: ", searchTerm);
-    // const params = new URLSearchParams({nameLike: searchTerm});
-    // console.log("params.nameLike:", params.nameLike);
-    const res = await this.request(`companies?nameLike="${searchTerm}"`);
-    debugger;
-    console.log("url:", `companies?nameLike=${searchTerm}`);
-    console.log('res: ', res);
-    debugger;
+
+    let res;
+    if (!searchTerm) {
+      res = await this.request(`companies`);
+    } else {
+      res = await this.request(`companies`, {nameLike: searchTerm});
+    }
+
     return res.companies;
   }
 
