@@ -14,12 +14,11 @@ function Navbar() {
   return (
     <div className="Navbar">
       <nav>
+        <NavLink to="/" className="Navbar-title">Jobly</NavLink>
         <ul>
-          <li><NavLink to="/">Jobly</NavLink></li>
           <li><NavLink to="/jobs">Jobs</NavLink></li>
           <li><NavLink to="/companies">Companies</NavLink></li>
         </ul>
-
       </nav>
     </div>
   )
