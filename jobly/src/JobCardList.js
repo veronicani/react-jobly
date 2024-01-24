@@ -29,4 +29,5 @@ function JobCardList({ filteredJobs }) {
   )
 }
 
+
 export default JobCardList;

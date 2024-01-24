@@ -4,6 +4,7 @@ import JobCardList from "./JobCardList";
 import SearchBar from "./SearchBar";
 
 import JoblyApi from "./api";
+import { unstable_useViewTransitionState } from "react-router-dom";
 
 /** JobList: Renders a list of jobs and the search bar. Makes API request to
  * get all job data based on search terms.
@@ -49,26 +50,21 @@ function JobList() {
   }, [searchTerm]);
 
   function search(job) {
-    console.log("JobList search");
     setJobList({data: null, isLoading: true, errors: null});
     setSearchTerm(job);
   }
 
   if (jobList.isLoading) return <i>Loading...</i>
   else if (jobList.errors) return <i>Server error. Please try again.</i>
-  else if (jobList.data.length === 0) return (
-    <div className="JobList">
-      <SearchBar search={search} />
-      <i>No jobs found for '{searchTerm}'</i>
-    </div>
-  )
 
-  console.log('jobList: ', jobList);
-
+  //NOTE: if no results for search, and click on link to JobList, should
+  //it show the same state? or load all jobs?
+  
   return (
     <div>
       <SearchBar search={search} />
-      <JobCardList filteredJobs={jobList.data} />
+      {jobList.data.length === 0 && <i>No jobs found for '{searchTerm}'</i>}
+      {jobList.data.length > 0 && <JobCardList filteredJobs={jobList.data} />}
     </div>
   )
 }

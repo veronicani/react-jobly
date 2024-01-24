@@ -51,9 +51,8 @@ function CompanyDetail() {
 
   return (
     <div className="CompanyDetail">
-      <h3>This is company detail.</h3>
       <h3>Company Name: {name}</h3>
-      <h3>Company description: {description}</h3>
+      <p>Company description: {description}</p>
       <JobCardList filteredJobs={jobs} />
     </div>
   );

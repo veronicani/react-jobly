@@ -49,29 +49,21 @@ function CompanyList() {
 
 
   function search(companyName) {
-    console.log("CompanyList search");
     setCompanyList({data: null, isLoading: true, errors: null})
     setSearchTerm(companyName);
   }
 
-  // return based on if it's loading, if there are errors, etc (like Company
-  // Detail pattern).
   if (companyList.isLoading) return <i>Loading...</i>
   else if (companyList.errors) return <i>Server error. Please try again.</i>
-  else if (companyList.data.length === 0) return (
-    <div className="CompanyList">
-      <SearchBar search={search} />
-      <i>No companies found for '{searchTerm}'.</i>
-    </div>
-  )
-  
-  console.log("companyList: ", companyList);
 
   return (
     <div className="CompanyList">
       <SearchBar search={search} />
-      {companyList.data.map(company => 
-      <CompanyCard key={company.handle} company={company}/>)}
+      {companyList.data.length === 0 &&
+        <i>No companies found for '{searchTerm}'.</i>}
+      {companyList.data.length > 0 &&
+        companyList.data.map(company => 
+          <CompanyCard key={company.handle} company={company} />)}
     </div>
   );
 }
