@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 /** CompanyCard: presentational component, shows name of company, company logo,
  *  and description.
@@ -15,7 +15,9 @@ function CompanyCard({ company }) {
 
   return (
     <div className="CompanyCard">
-      <p>COMPANY CARD</p>
+      {/* <Link to={`/companies/${company.handle}`} > */}
+        <p>COMPANY CARD</p>
+      {/* </Link> */}
     </div>
   )
 }
