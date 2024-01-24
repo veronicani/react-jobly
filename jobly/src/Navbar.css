@@ -1,29 +1,43 @@
-.Navbar nav ul {
+nav {
+  background-color: lightgoldenrodyellow;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.Navbar-title {
+  font-size: 2rem;
+}
+
+nav ul {
   list-style: none;
   display: flex;
-  margin: 0;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   padding: 0;
+  margin: 0;
 }
 
-.Navbar nav ul li {
-  margin-left: 20px;
+nav a, nav li a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+  transition: background-color 0.33s ease;
+  position: relative;
 }
 
-.Navbar nav ul li:hover {
-  background-color: lightcoral;
-}
-
-.Navbar nav ul li a.active {
-  color: blue;
-  background-color: green;
-  text-decoration: underline;
+nav li a.active {
   font-weight: bold;
 }
 
-.Navbar nav ul li a {
-  text-decoration: none;
-}
-
-.Navbar nav a:visited {
-  color: blue;
+nav li a:hover {
+  background-color: rgb(222, 222, 222);
 }
