@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import "./Navbar.css";
 
 /** Navbar: component for Jobly app
  *
@@ -13,9 +14,12 @@ function Navbar() {
   return (
     <div className="Navbar">
       <nav>
-        <NavLink to="/">Jobly</NavLink>
-        <NavLink to="/jobs">Jobs</NavLink>
-        <NavLink to="/companies">Companies</NavLink>
+        <ul>
+          <li><NavLink to="/">Jobly</NavLink></li>
+          <li><NavLink to="/jobs">Jobs</NavLink></li>
+          <li><NavLink to="/companies">Companies</NavLink></li>
+        </ul>
+
       </nav>
     </div>
   )
