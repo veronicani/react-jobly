@@ -25,7 +25,7 @@ function CompanyDetail() {
   });
   console.log("CompanyDetail state: ", companyDetail);
 
-  useEffect(function getCompanyDataOnMount() {
+  useEffect(function fetchCompanyDataOnMount() {
     async function fetchCompanyData() {
       try {
         const companyData = await JoblyApi.getCompany(handle);
