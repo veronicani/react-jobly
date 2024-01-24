@@ -11,7 +11,7 @@
  */
 
 function CompanyCard({ company }) {
-  console.log("CompanyCard input: ", company);
+  // console.log("CompanyCard input: ", company);
 
   return (
     <div className="CompanyCard">

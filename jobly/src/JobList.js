@@ -9,7 +9,7 @@ import JobCardList from "./JobCardList";
  * - searchedTerm: the search term submitted from the seach bar.
  * - filteredJobs: [{ id, salary, equity, title, companyHandle, companyName }, ...]
  *
- * RoutesList -> JobList -> JobCardList
+ * RoutesList -> JobList -> { JobCardList, SearchBar }
 */
 
 function JobList({ filteredJobs }) {
