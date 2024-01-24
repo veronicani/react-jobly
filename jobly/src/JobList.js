@@ -1,14 +1,14 @@
-import JobCardList from "./JobCardList" 
+import JobCardList from "./JobCardList";
 
 /** JobList: Renders a list of jobs and search bar.
- * 
- * Props: 
+ *
+ * Props:
  * - none
- * 
+ *
  * State:
  * - searchedTerm: the search term submitted from the seach bar.
  * - filteredJobs: [{ id, salary, equity, title, companyHandle, companyName }, ...]
- * 
+ *
  * RoutesList -> JobList -> JobCardList
 */
 

@@ -1,13 +1,13 @@
-import JobCard from "./JobCard"
+import JobCard from "./JobCard";
 
 /** JobCardList: Renders a list of job cards from filtered jobs.
- * 
- * Props: 
+ *
+ * Props:
  * - filteredJobs: [{ id, salary, equity, title, companyHandle, companyName }, ...]
- * 
+ *
  * State:
  * none
- * 
+ *
  * JobList -> JobCardList -> JobCard
 */
 
