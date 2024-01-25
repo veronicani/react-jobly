@@ -22,6 +22,9 @@ function RoutesList() {
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
+
+      <Route path="/login" element={<LoginForm />} />
+
       <Route path="*" element={<Navigate to={"/"} />} />
     </Routes>
   )
