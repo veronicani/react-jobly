@@ -12,18 +12,23 @@ import { useState } from "react";
  *  CompanyList -> SearchBar
  */
 
-function SearchBar({ search }) {
-  const [term, setTerm] = useState("")
+function SearchBar({ search, searchTerm }) {
+  const [term, setTerm] = useState(searchTerm)
 
-  //TODO: DOCSTRING
+  console.log('SearchBar searchTerm: ', term);
+
+
+  /** Update form input */
   function handleChange(evt) {
-    setTerm(evt.target.value); //TODO: use as cb pattern
+    const field = evt.target;
+    setTerm(t => t = field.value);
   }
-  //TODO: DOCSTRING
+
+
+  /** Call parent function and clear form? Don't clear form. */
   function handleSubmit(evt) {
     evt.preventDefault();
     search(term);
-    setTerm(""); //TODO: nice to have the term stay in the search
   }
 
   return (
