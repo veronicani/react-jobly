@@ -12,7 +12,7 @@ import SearchBar from "./SearchBar";
  *
  *  State:
  *  - searchTerm: the search term submitted from the search bar.
- *  - TODO: update! filteredCompanies: [{handle, name, description, numEmployees, logoUrl}, ...]
+ *  - companyList: [{handle, name, description, numEmployees, logoUrl}, ...]
  *
  *  RoutesList -> CompanyList -> { CompanyCard, SearchBar }
 */
@@ -28,8 +28,11 @@ function CompanyList() {
   console.log('CompanyList companyList state: ', companyList);
   console.log('CompanyList searchTerm state: ', searchTerm);
 
-  //TODO: Good to comment what this is for
+  // Makes a request to JoblyApi for a list of company data, everytime a
+  // new search term is submitted from search bar. Sets the companyList
+  // state to be the status of the data. 
   useEffect(function fetchFilteredCompaniesOnSearch() {
+    console.log("CompanyList useEffect");
     async function fetchCompanies() {
       try {
         const companiesData = await JoblyApi.getCompanies(searchTerm);
@@ -48,8 +51,12 @@ function CompanyList() {
     fetchCompanies();
   }, [searchTerm]);
 
-  //TODO: Docstring!
+  /** search: When user submits a search term for a company name, 
+   * it will update the states of CompanyList and searchTerm.
+   * On update, useEffect will run again with the updated search term. 
+   **/
   function search(companyName) {
+    console.log("searching for: ", companyName);
     setCompanyList({data: null, isLoading: true, errors: null})
     setSearchTerm(companyName);
   }
