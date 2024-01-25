@@ -103,6 +103,6 @@ export default CompanyList;
 
 
 // FIXME:
-// - how to search for the same thing twice?
-// - add CSS fun stuff
+// - how to search for the same thing twice? Use a new obj!
+// - add CSS fun stuff We definitely did! And will continue doing so!
 // - fix our TODO:s

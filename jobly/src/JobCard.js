@@ -17,13 +17,16 @@ import "./JobCard.css";
 function JobCard({ job }) {
   console.log("JobCard input: ", job);
   //TODO: destructure job
+
+  const { title, companyName, salary, equity } = job;
+
   return (
     <div className="JobCard">
       <h3 className="JobCard-title">{job.title}</h3>
-      {job.companyName &&
-        <p>Company: {job.companyName}</p>}
-      <p>Salary: {job.salary}</p>
-      <p>Equity: {job.equity}</p>
+      {companyName &&
+        <p>Company: {companyName}</p>}
+      {salary &&  <p>Salary: {salary}</p>}
+      {equity && <p>Equity: {equity}</p>}
     </div>
   )
 }
