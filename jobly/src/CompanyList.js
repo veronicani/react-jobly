@@ -30,7 +30,7 @@ function CompanyList() {
 
   // Makes a request to JoblyApi for a list of company data, everytime a
   // new search term is submitted from search bar. Sets the companyList
-  // state to be the status of the data. 
+  // state to be the status of the data.
   useEffect(function fetchFilteredCompaniesOnSearch() {
     console.log("CompanyList useEffect");
     async function fetchCompanies() {
@@ -51,19 +51,26 @@ function CompanyList() {
     fetchCompanies();
   }, [searchTerm]);
 
-  /** search: When user submits a search term for a company name, 
+  /** search: When user submits a search term for a company name,
    * it will update the states of CompanyList and searchTerm.
-   * On update, useEffect will run again with the updated search term. 
+   * On update, useEffect will run again with the updated search term.
    **/
   function search(companyName) {
     console.log("searching for: ", companyName);
     console.log(companyList);
-    setCompanyList(cList => ({...cList, isLoading: true, errors: null}));
+
+    if (companyName === searchTerm) {
+      setCompanyList(cList => ({...cList, isLoading: false, errors: null}));
+    } else {
+      setCompanyList({data: null, isLoading: true, errors: null});
+    }
     setSearchTerm(companyName);
   }
 
   if (companyList.isLoading && companyList.data === null) return <i>Loading...</i>
   else if (companyList.errors) return <i>Server error. Please try again.</i>
+
+  debugger;
 
   return (
     <div className="CompanyList">
@@ -79,3 +86,10 @@ function CompanyList() {
 
 
 export default CompanyList;
+
+
+
+// FIXME:
+// - how to search for the same thing twice?
+// - add CSS fun stuff
+// - fix our TODO:s
