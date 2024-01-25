@@ -57,11 +57,12 @@ function CompanyList() {
    **/
   function search(companyName) {
     console.log("searching for: ", companyName);
-    setCompanyList({data: null, isLoading: true, errors: null})
+    console.log(companyList);
+    setCompanyList(cList => ({...cList, isLoading: true, errors: null}));
     setSearchTerm(companyName);
   }
 
-  if (companyList.isLoading) return <i>Loading...</i>
+  if (companyList.isLoading && companyList.data === null) return <i>Loading...</i>
   else if (companyList.errors) return <i>Server error. Please try again.</i>
 
   return (
