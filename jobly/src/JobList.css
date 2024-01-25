@@ -1,18 +1,20 @@
-.CompanyDetail-header {
-  color: white;
-  padding: 1rem;
-}
-
-.CompanyDetail-header p {
-  font-size: 1rem;
-}
-
 @keyframes rotate {
   from {transform: rotate(0deg);}
   to {transform: rotate(360deg);}
 }
 
-.CompanyDetail-loader {
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.JobList-loader {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,4 +36,9 @@
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+}
+
+.JobList-none {
+  margin-top: 2rem;
+  animation: slideIn 0.5s ease;
 }

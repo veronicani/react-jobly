@@ -4,6 +4,8 @@ import JoblyApi from "./api";
 import CompanyCard from "./CompanyCard";
 import SearchBar from "./SearchBar";
 
+import "./CompanyList.css";
+
 /** CompanyList: logical, makes API request to Jobly API. Renders the search
  * bar and list of CompanyCards.
  *
@@ -67,7 +69,14 @@ function CompanyList() {
     setSearchTerm(companyName);
   }
 
-  if (companyList.isLoading && companyList.data === null) return <i>Loading...</i>
+  if (companyList.isLoading && companyList.data === null) {
+    return (
+      <div className="CompanyList-loader">
+        <div id="html-spinner"></div>
+        <i>Loading...</i>
+      </div>
+    );
+  }
   else if (companyList.errors) return <i>Server error. Please try again.</i>
 
 
@@ -75,7 +84,9 @@ function CompanyList() {
     <div className="CompanyList">
       <SearchBar search={search} searchTerm={searchTerm}/>
       {companyList.data.length === 0 &&
-        <i>No companies found for '{searchTerm}'.</i>}
+        <div className="CompanyList-none">
+          <i>No companies found for '{searchTerm}'.</i>
+        </div>}
       {companyList.data.length > 0 &&
         companyList.data.map(company =>
           <CompanyCard key={company.handle} company={company} />)}

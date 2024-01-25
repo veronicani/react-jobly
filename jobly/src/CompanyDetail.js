@@ -47,7 +47,14 @@ function CompanyDetail() {
     fetchCompanyData();
   }, [handle]); //if there's a var in the cb fn, put in dependency list
 
-  if (companyDetail.isLoading) return <i>Loading...</i>
+  if (companyDetail.isLoading) {
+    return (
+      <div className="CompanyDetail-loader">
+        <div id="html-spinner"></div>
+        <i>Loading...</i>
+      </div>
+    );
+  }
   else if (companyDetail.errors) return <Navigate to="/companies" />
 
   const { name, description, jobs } = companyDetail.data;

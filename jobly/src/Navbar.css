@@ -12,6 +12,22 @@ nav {
 .Navbar-title {
   font-size: 2rem;
   font-weight: 700;
+  position: relative;
+}
+
+.Navbar-title::after {
+  content: '👩‍💼🧑‍💼👨‍💼';
+  position: absolute;
+  top: 0;
+  right: -6rem;
+  font-size: 2rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.Navbar-title:hover::after {
+  opacity: 1;
 }
 
 nav ul {
