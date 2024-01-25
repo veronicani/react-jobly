@@ -3,27 +3,24 @@ import { useState } from "react";
 
 const DEFAULT_FORM_DATA = {
   username: "",
-  password: "",
-  firstName: "",
-  lastName: "",
-  email: ""
+  password: ""
 };
 
-/** LoginForm: logs in user
+/** LoginForm: Logs in user.
  *
  *  Props:
- *  - handleSignUp
+ *  - handleLogin(): function to call in parent
  *
  *  State:
  *  - formData
  *
- *  RoutesList -> SignUpForm -> Alert
+ *  RoutesList -> LoginForm -> Alert
  */
 
-function LoginForm({ handleSignUp }) {
+function LoginForm({ handleLogin }) {
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
 
-  const { username, password, firstName, lastName, email } = formData;
+  const { username, password } = formData;
 
   /** Updates form values with user input */
   function handleChange(evt) {
@@ -37,7 +34,7 @@ function LoginForm({ handleSignUp }) {
   /** Calls parent function and clears form */
   function handleSubmit(evt) {
     evt.preventDefault();
-    handleSignUp(formData);
+    handleLogin(formData);
     setFormData(DEFAULT_FORM_DATA);
   }
 
@@ -45,7 +42,7 @@ function LoginForm({ handleSignUp }) {
     <form className="LoginForm" onSubmit={handleSubmit}>
 
       <div className="LoginForm-username">
-        <label htmlFor="username">Username: </label>
+        <label htmlFor="LoginForm-input-username">Username: </label>
         <input
           id="LoginForm-input-username"
           name="username"
@@ -56,7 +53,7 @@ function LoginForm({ handleSignUp }) {
         />
       </div>
       <div className="LoginForm-password">
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="LoginForm-input-password">Password: </label>
         <input
           id="LoginForm-input-password"
           name="password"
@@ -66,42 +63,7 @@ function LoginForm({ handleSignUp }) {
           aria-label="Password"
         />
       </div>
-      <div className="LoginForm-firstName">
-        <label htmlFor="firstName">First Name: </label>
-        <input
-          id="LoginForm-input-firstName"
-          name="firstName"
-          placeholder="First Name"
-          onChange={handleChange}
-          value={firstName}
-          aria-label="firstName"
-        />
-      </div>
-      <div className="LoginForm-lastName">
-        <label htmlFor="lastName">Last Name: </label>
-        <input
-          id="LoginForm-input-lastName"
-          name="lastName"
-          placeholder="Last Name"
-          onChange={handleChange}
-          value={lastName}
-          aria-label="lastName"
-        />
-      </div>
-      <div className="LoginForm-email">
-        <label htmlFor="email">Email: </label>
-        <input
-          id="LoginForm-input-email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          value={email}
-          aria-label="Email"
-        />
-      </div>
-
-      <button className="LoginForm-login-btn">SUBMIT</button>
-
+      <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}
     </form>
   )
 }
