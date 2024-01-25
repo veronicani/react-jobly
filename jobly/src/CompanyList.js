@@ -53,6 +53,9 @@ function CompanyList() {
     fetchCompanies();
   }, [searchTerm]);
 
+  // FIXME: switch str type state to obj state so searchTerm can still fire
+  // off request even w/ same previous searchTerm
+
   /** search: When user submits a search term for a company name,
    * it will update the states of CompanyList and searchTerm.
    * On update, useEffect will run again with the updated search term.
