@@ -72,7 +72,10 @@ function JobList() {
   return (
     <div>
       <SearchBar search={search} />
-      {jobList.data.length === 0 && <i>No jobs found for '{searchTerm}'</i>}
+      {jobList.data.length === 0 &&
+      <div className="JobList-none">
+        <i>No jobs found for '{searchTerm}'.</i>
+      </div>}
       {jobList.data.length > 0 && <JobCardList filteredJobs={jobList.data} />}
     </div>
   )

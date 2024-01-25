@@ -84,7 +84,9 @@ function CompanyList() {
     <div className="CompanyList">
       <SearchBar search={search} searchTerm={searchTerm}/>
       {companyList.data.length === 0 &&
-        <i>No companies found for '{searchTerm}'.</i>}
+        <div className="CompanyList-none">
+          <i>No companies found for '{searchTerm}'.</i>
+        </div>}
       {companyList.data.length > 0 &&
         companyList.data.map(company =>
           <CompanyCard key={company.handle} company={company} />)}
