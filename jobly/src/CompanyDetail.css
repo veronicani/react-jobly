@@ -3,7 +3,7 @@
   to {transform: rotate(360deg);}
 }
 
-.CompanyList-loader {
+.CompanyDetail-loader {
   display: flex;
   flex-direction: column;
   align-items: center;
