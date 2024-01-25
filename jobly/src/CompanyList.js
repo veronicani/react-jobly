@@ -20,7 +20,9 @@ import "./CompanyList.css";
 */
 
 function CompanyList() {
-  const [searchedTerm, setSearchedTerm ] = useState("");
+  //searchedTerm here is set as an object, so that everytime it is submitted,
+  //even if it's the same term as before, useEffect will run
+  const [searchedTerm, setSearchedTerm ] = useState({term: ""});
   const [companyList, setCompanyList] = useState({
     data: null,
     isLoading: true,
@@ -34,10 +36,10 @@ function CompanyList() {
   // new search term is submitted from search bar. Sets the companyList
   // state to be the status of the data.
   useEffect(function fetchFilteredCompaniesOnSearch() {
-    console.log("CompanyList useEffect");
+    // console.log("CompanyList useEffect");
     async function fetchCompanies() {
       try {
-        const companiesData = await JoblyApi.getCompanies(searchedTerm);
+        const companiesData = await JoblyApi.getCompanies(searchedTerm.term);
         setCompanyList({
           data: companiesData,
           isLoading: false
@@ -53,23 +55,13 @@ function CompanyList() {
     fetchCompanies();
   }, [searchedTerm]);
 
-  // FIXME: switch str type state to obj state so searchTerm can still fire
-  // off request even w/ same previous searchTerm
-
   /** search: When user submits a search term for a company name,
    * it will update the states of companyList and searchTerm.
    * On update, useEffect will run again with the updated search term.
    */
   function search(companyName) {
-    console.log("searching for: ", companyName);
-    console.log(companyList);
-
-    if (companyName === searchedTerm) {
-      setCompanyList(cList => ({...cList, isLoading: false, errors: null}));
-    } else {
-      setCompanyList({data: null, isLoading: true, errors: null});
-    }
-    setSearchedTerm(companyName);
+    setCompanyList({data: null, isLoading: true, errors: null});
+    setSearchedTerm({term: companyName});
   }
 
   if (companyList.isLoading && companyList.data === null) {
@@ -82,13 +74,12 @@ function CompanyList() {
   }
   else if (companyList.errors) return <i>Server error. Please try again.</i>
 
-
   return (
     <div className="CompanyList">
-      <SearchBar search={search} searchTerm={searchedTerm}/>
+      <SearchBar search={search} searchTerm={searchedTerm.term}/>
       {companyList.data.length === 0 &&
         <div className="CompanyList-none">
-          <i>No companies found for '{searchedTerm}'.</i>
+          <i>No companies found for '{searchedTerm.term}'.</i>
         </div>}
       {companyList.data.length > 0 &&
         companyList.data.map(company =>
