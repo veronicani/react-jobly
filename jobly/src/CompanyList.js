@@ -42,7 +42,8 @@ function CompanyList() {
         const companiesData = await JoblyApi.getCompanies(searchedTerm.term);
         setCompanyList({
           data: companiesData,
-          isLoading: false
+          isLoading: false,
+          errors: null
         });
       } catch (err) {
         setCompanyList({
