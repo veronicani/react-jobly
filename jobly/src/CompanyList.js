@@ -20,7 +20,7 @@ import "./CompanyList.css";
 */
 
 function CompanyList() {
-  const [searchTerm, setSearchTerm ] = useState("");
+  const [searchedTerm, setSearchedTerm ] = useState("");
   const [companyList, setCompanyList] = useState({
     data: null,
     isLoading: true,
@@ -28,7 +28,7 @@ function CompanyList() {
   });
 
   console.log('CompanyList companyList state: ', companyList);
-  console.log('CompanyList searchTerm state: ', searchTerm);
+  console.log('CompanyList searchTerm state: ', searchedTerm);
 
   // Makes a request to JoblyApi for a list of company data, everytime a
   // new search term is submitted from search bar. Sets the companyList
@@ -37,7 +37,7 @@ function CompanyList() {
     console.log("CompanyList useEffect");
     async function fetchCompanies() {
       try {
-        const companiesData = await JoblyApi.getCompanies(searchTerm);
+        const companiesData = await JoblyApi.getCompanies(searchedTerm);
         setCompanyList({
           data: companiesData,
           isLoading: false
@@ -51,7 +51,7 @@ function CompanyList() {
       }
     }
     fetchCompanies();
-  }, [searchTerm]);
+  }, [searchedTerm]);
 
   // FIXME: switch str type state to obj state so searchTerm can still fire
   // off request even w/ same previous searchTerm
@@ -64,12 +64,12 @@ function CompanyList() {
     console.log("searching for: ", companyName);
     console.log(companyList);
 
-    if (companyName === searchTerm) {
+    if (companyName === searchedTerm) {
       setCompanyList(cList => ({...cList, isLoading: false, errors: null}));
     } else {
       setCompanyList({data: null, isLoading: true, errors: null});
     }
-    setSearchTerm(companyName);
+    setSearchedTerm(companyName);
   }
 
   if (companyList.isLoading && companyList.data === null) {
@@ -85,10 +85,10 @@ function CompanyList() {
 
   return (
     <div className="CompanyList">
-      <SearchBar search={search} searchTerm={searchTerm}/>
+      <SearchBar search={search} searchTerm={searchedTerm}/>
       {companyList.data.length === 0 &&
         <div className="CompanyList-none">
-          <i>No companies found for '{searchTerm}'.</i>
+          <i>No companies found for '{searchedTerm}'.</i>
         </div>}
       {companyList.data.length > 0 &&
         companyList.data.map(company =>

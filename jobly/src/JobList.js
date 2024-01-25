@@ -20,7 +20,7 @@ import "./JobList.css";
 */
 
 function JobList() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchedTerm, setSearchedTerm] = useState("");
   const [jobList, setJobList] = useState({
     data: null,
     isLoading: true,
@@ -28,7 +28,7 @@ function JobList() {
   });
 
   console.log('JobList jobList state: ', jobList);
-  console.log('JobList searchTerm state: ', searchTerm);
+  console.log('JobList searchTerm state: ', searchedTerm);
 
   // Makes a request to JoblyApi for a list of jobs data, everytime a
   // new search term is submitted from search bar. Sets the jobList
@@ -36,7 +36,7 @@ function JobList() {
   useEffect(function fetchFilteredJobsOnSearch() {
     async function fetchJobs() {
       try {
-        const jobsData = await JoblyApi.getJobs(searchTerm);
+        const jobsData = await JoblyApi.getJobs(searchedTerm);
         setJobList({
           data: jobsData,
           isLoading: false
@@ -50,7 +50,7 @@ function JobList() {
       }
     }
     fetchJobs();
-  }, [searchTerm]);
+  }, [searchedTerm]);
 
   /** search: When user submits a search term for a job name,
    * it will update the states of jobList and searchTerm.
@@ -58,7 +58,7 @@ function JobList() {
    */
   function search(job) {
     setJobList({data: null, isLoading: true, errors: null});
-    setSearchTerm(job);
+    setSearchedTerm(job);
   }
 
   if (jobList.isLoading) {
@@ -79,7 +79,7 @@ function JobList() {
       <SearchBar search={search} />
       {jobList.data.length === 0 &&
       <div className="JobList-none">
-        <i>No jobs found for '{searchTerm}'.</i>
+        <i>No jobs found for '{searchedTerm}'.</i>
       </div>}
       {jobList.data.length > 0 && <JobCardList filteredJobs={jobList.data} />}
     </div>
