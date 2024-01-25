@@ -70,7 +70,6 @@ function CompanyList() {
   if (companyList.isLoading && companyList.data === null) return <i>Loading...</i>
   else if (companyList.errors) return <i>Server error. Please try again.</i>
 
-  debugger;
 
   return (
     <div className="CompanyList">
