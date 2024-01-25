@@ -19,7 +19,7 @@ function JobCard({ job }) {
   //TODO: destructure job
   return (
     <div className="JobCard">
-      <h3>{job.title}</h3>
+      <h3 className="JobCard-title">{job.title}</h3>
       {job.companyName &&
         <p>Company: {job.companyName}</p>}
       <p>Salary: {job.salary}</p>
