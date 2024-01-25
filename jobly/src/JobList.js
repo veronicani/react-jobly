@@ -30,7 +30,9 @@ function JobList() {
   console.log('JobList jobList state: ', jobList);
   console.log('JobList searchTerm state: ', searchTerm);
 
-  //TODO: comment!
+  // Makes a request to JoblyApi for a list of jobs data, everytime a
+  // new search term is submitted from search bar. Sets the jobList
+  // state to be the status of the data.
   useEffect(function fetchFilteredJobsOnSearch() {
     async function fetchJobs() {
       try {
@@ -50,7 +52,10 @@ function JobList() {
     fetchJobs();
   }, [searchTerm]);
 
-  //TODO: DOCSTRING!
+  /** search: When user submits a search term for a job name,
+   * it will update the states of jobList and searchTerm.
+   * On update, useEffect will run again with the updated search term.
+   */
   function search(job) {
     setJobList({data: null, isLoading: true, errors: null});
     setSearchTerm(job);
