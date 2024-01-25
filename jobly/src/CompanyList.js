@@ -48,7 +48,7 @@ function CompanyList() {
     fetchCompanies();
   }, [searchTerm]);
 
-  //TODO: DOcstring! 
+  //TODO: Docstring!
   function search(companyName) {
     setCompanyList({data: null, isLoading: true, errors: null})
     setSearchTerm(companyName);
@@ -59,11 +59,11 @@ function CompanyList() {
 
   return (
     <div className="CompanyList">
-      <SearchBar search={search} />
+      <SearchBar search={search} searchTerm={searchTerm}/>
       {companyList.data.length === 0 &&
         <i>No companies found for '{searchTerm}'.</i>}
       {companyList.data.length > 0 &&
-        companyList.data.map(company => 
+        companyList.data.map(company =>
           <CompanyCard key={company.handle} company={company} />)}
     </div>
   );
