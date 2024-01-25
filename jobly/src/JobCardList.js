@@ -3,13 +3,7 @@ import JobCard from "./JobCard";
 /** JobCardList: Renders a list of job cards from filtered jobs.
  *
  * Props:
- *   One of the following:
- * //TODO: list what it NEEDS, to render (companyName is optional)
- *    - filteredJobs from JobList:
- *      [{ id, salary, equity, title, companyHandle, companyName }, ...]
- *
- *    - filteredJobs from CompanyDetail:
- *      [{ id, salary, equity, title}, ...]
+ *  filteredJobs -> [{title, salary, equity, companyName (optional)} ...]
  *
  * State:
  * - none
