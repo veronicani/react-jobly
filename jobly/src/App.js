@@ -15,7 +15,6 @@ import LoginForm from "./LoginForm";
  * App -> { Navbar, RoutesList }
  */
 function App() {
-  const []
 
 
   function signUp() {
