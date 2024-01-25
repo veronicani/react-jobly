@@ -4,6 +4,7 @@ import JobCardList from "./JobCardList";
 import SearchBar from "./SearchBar";
 
 import JoblyApi from "./api";
+import "./JobList.css";
 
 /** JobList: Renders a list of jobs and the search bar. Makes API request to
  * get all job data based on search terms.
@@ -48,19 +49,26 @@ function JobList() {
     }
     fetchJobs();
   }, [searchTerm]);
- 
+
   //TODO: DOCSTRING!
   function search(job) {
     setJobList({data: null, isLoading: true, errors: null});
     setSearchTerm(job);
   }
 
-  if (jobList.isLoading) return <i>Loading...</i>
+  if (jobList.isLoading) {
+    return (
+      <div className="JobList-loader">
+        <div id="html-spinner"></div>
+        <i>Loading...</i>
+      </div>
+    );
+  }
   else if (jobList.errors) return <i>Server error. Please try again.</i>
 
   //NOTE: if no results for search, and click on link to JobList, should
   //it show the same state? or load all jobs?
-  
+
   return (
     <div>
       <SearchBar search={search} />
