@@ -13,3 +13,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Hacked together styling for <i> element (Loading...) 
+  Will probably want to move this to an actual component in further study
+*/
+i {
+  font-size: 2rem;
+  color: white;
+}
