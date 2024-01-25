@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./SearchBar.css"
+import "./SearchBar.css";
 
 /** SearchBar component
  *
@@ -34,7 +34,7 @@ function SearchBar({ search, searchTerm }) {
   return (
     <form className="SearchBar" onSubmit={handleSubmit}>
       <input value={term} onChange={handleChange} />
-      <button>Search!</button>
+      <button className="SearchBar-btn btn btn-primary">Search!</button>
     </form>
   )
 }
