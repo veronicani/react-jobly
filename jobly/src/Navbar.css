@@ -1,15 +1,17 @@
 nav {
-  background-color: lightgoldenrodyellow;
-  color: black;
+  background-color: rgb(255, 255, 255);
+  color: rgb(64, 80, 115);
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   gap: 2rem;
-  padding: 1rem;
+  padding-inline: 1rem;
+  padding-block: .5rem;
 }
 
 .Navbar-title {
   font-size: 2rem;
+  font-weight: 700;
 }
 
 nav ul {
