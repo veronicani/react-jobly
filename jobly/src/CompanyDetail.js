@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import JoblyApi from "./api";
 import JobCardList from "./JobCardList";
+import "./CompanyDetail.css";
 
 /** CompanyDetail: logical component for single company. Makes a request to
  * Jobly API for data about a company.
@@ -53,8 +54,10 @@ function CompanyDetail() {
 
   return (
     <div className="CompanyDetail">
-      <h3>Company Name: {name} ({handle})</h3>
-      <p>Company description: {description}</p>
+      <div className="CompanyDetail-header">
+        <h2>Company Name: {name} ({handle})</h2>
+        <p>Company description: {description}</p>
+      </div>
       <JobCardList filteredJobs={jobs} />
     </div>
   );
