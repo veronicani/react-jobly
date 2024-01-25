@@ -57,9 +57,9 @@ function CompanyList() {
   // off request even w/ same previous searchTerm
 
   /** search: When user submits a search term for a company name,
-   * it will update the states of CompanyList and searchTerm.
+   * it will update the states of companyList and searchTerm.
    * On update, useEffect will run again with the updated search term.
-   **/
+   */
   function search(companyName) {
     console.log("searching for: ", companyName);
     console.log(companyList);
@@ -99,10 +99,3 @@ function CompanyList() {
 
 
 export default CompanyList;
-
-
-
-// FIXME:
-// - how to search for the same thing twice? Use a new obj!
-// - add CSS fun stuff We definitely did! And will continue doing so!
-// - fix our TODO:s
