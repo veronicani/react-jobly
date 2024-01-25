@@ -20,7 +20,9 @@ import "./JobList.css";
 */
 
 function JobList() {
-  const [searchedTerm, setSearchedTerm] = useState("");
+  //searchedTerm here is set as an object, so that everytime it is submitted,
+  //even if it's the same term as before, useEffect will run
+  const [searchedTerm, setSearchedTerm] = useState({term: ""});
   const [jobList, setJobList] = useState({
     data: null,
     isLoading: true,
@@ -36,10 +38,11 @@ function JobList() {
   useEffect(function fetchFilteredJobsOnSearch() {
     async function fetchJobs() {
       try {
-        const jobsData = await JoblyApi.getJobs(searchedTerm);
+        const jobsData = await JoblyApi.getJobs(searchedTerm.term);
         setJobList({
           data: jobsData,
-          isLoading: false
+          isLoading: false,
+          errors: null
         });
       } catch (err) {
         setJobList({
@@ -58,7 +61,7 @@ function JobList() {
    */
   function search(job) {
     setJobList({data: null, isLoading: true, errors: null});
-    setSearchedTerm(job);
+    setSearchedTerm({term: job});
   }
 
   if (jobList.isLoading) {
@@ -76,10 +79,10 @@ function JobList() {
 
   return (
     <div>
-      <SearchBar search={search} />
+      <SearchBar search={search} searchTerm={searchedTerm.term}/>
       {jobList.data.length === 0 &&
       <div className="JobList-none">
-        <i>No jobs found for '{searchedTerm}'.</i>
+        <i>No jobs found for '{searchedTerm.term}'.</i>
       </div>}
       {jobList.data.length > 0 && <JobCardList filteredJobs={jobList.data} />}
     </div>
