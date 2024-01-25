@@ -25,9 +25,11 @@ function CompanyDetail() {
     errors: null
   });
   console.log("CompanyDetail state: ", companyDetail);
-  //TODO: comment!
-  // useEffect only happens on first render, but not when handle changes
-  useEffect(function fetchCompanyDataOnMount() {
+
+  // Makes a request to JoblyApi for single company data, everytime the company
+  // handle changes when entering route. Sets the companyDetail state to be the
+  // status of the received data from JoblyApi.
+  useEffect(function fetchCompanyDataOnHandle() {
     console.log("CompanyDetail useEffect");
     async function fetchCompanyData() {
       try {
