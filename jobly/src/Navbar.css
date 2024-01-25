@@ -16,7 +16,7 @@ nav {
 }
 
 .Navbar-title::after {
-  content: '👩‍💼🧑‍💼👨‍💼';
+  content: '👩🏽‍💼🧑🏻‍💼👨🏾‍💼';
   position: absolute;
   top: 0;
   right: -6rem;
