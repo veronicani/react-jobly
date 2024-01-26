@@ -28,66 +28,45 @@ const DEFAULT_USER_DATA = {
  */
 function App() {
   const [userData, setUserData] = useState({ DEFAULT_USER_DATA });
-  // const [signUpErrs, setSignUpErrs] = useState([]);
-  const [loginErrs, setLoginErrs] = useState([]);
 
-
-  console.log("This is userData: ", userData);
-  // console.log('This is signUpErrs: ', signUpErrs);
+  console.log("App userData state: ", userData);
 
   /** signUp: Registers the user with the SignUpForm data.
-   * On success, stores user's username, first name, last name,
-   *  and email in userData.
-   *
-   * On failure, recieves error messages, and stores in state to pass to
-   * SignUpForm.
+   * Stores user's username, first name, last name, and email in userData.
    */
 
   async function signUp(formData) {
-
     const { username, password, firstName, lastName, email } = formData;
-    const response = await JoblyApi
+    await JoblyApi
       .registerUser(username, password, firstName, lastName, email);
-    // TODO: handle API err here? 1 of 2
 
-    // if (response.status === "ok") {
-      setUserData({
-        username: username,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-      });
-    // } else {
-    //   setSignUpErrs(errs => [...errs, response.errors]);
-    // }
+    setUserData({
+      username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    });
   }
 
   /** login: Logins the user with the LoginForm data.
-   *  On success, user data is saved in state.
-   *  On failure, receives error messages, and stores in state to pass to
-   *  LoginForm.
+   *  Stores user's username, first name, last name, and email in userData.
+   *
   */
 
   async function login(formData) {
 
     const { username, password } = formData;
-    const { firstName, lastName, email, errors } = (
+    const { firstName, lastName, email } = (
       await JoblyApi.loginUser(username, password));
 
-    if (firstName) {
-      setUserData({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-      });
-    } else {
-      setLoginErrs(errs => [...errs, errors]);
-    }
+    setUserData({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+    });
   }
 
-  /** logout: logs out user when entering signup form and clicking logout
-   *  button
-   */
+  /** logout: Resets userData to default. */
 
   function logout() {
     setUserData(DEFAULT_USER_DATA);
@@ -98,18 +77,14 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <userContext.Provider value={{ user: userData }}>
-
           <Navbar />
           <RoutesList
             signUp={signUp}
             login={login}
             logout={logout}
-            signUpErrs={signUpErrs}
-            loginErrs={loginErrs}
           />
         </userContext.Provider>
       </BrowserRouter>
-
     </div>
   );
 }
