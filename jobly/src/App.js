@@ -26,15 +26,15 @@ const DEFAULT_USER_DATA = {
 function App() {
   const [userData, setUserData] = useState({DEFAULT_USER_DATA});
   const [signUpErrs, setSignUpErrs] = useState([]);
-  const [loginErrs, setloginErrs] = useState([]);
+  const [loginErrs, setLoginErrs] = useState([]);
 
 
   console.log("This is userData: ", userData);
   console.log('This is signUpErrs: ', signUpErrs);
 
   /** signUp: Registers the user with the SignUpForm data.
-   * On success, receives token, and stores token, user's username,
-   *    first name, last name, and email in userData.
+   * On success, stores user's username, first name, last name,
+   *  and email in userData.
    *
    * On failure, recieves error messages, and stores in state to pass to
    * SignUpForm.
@@ -57,17 +57,16 @@ function App() {
     }
   }
 
-
-
   /** login: Logins the user with the LoginForm data.
-   *  On success, receives token.
+   *  On success, user data is saved in state.
    *  On failure, receives error messages, and stores in state to pass to
    *  LoginForm.
   */
 
   async function login(formData) {
     const { username, password } = formData;
-    const { firstName, lastName, email, errors } = await JoblyApi.loginUser(username, password);
+    const { firstName, lastName, email, errors } = (
+      await JoblyApi.loginUser(username, password));
 
     if (firstName) {
       setUserData({
@@ -76,7 +75,7 @@ function App() {
         email: email,
       })
     } else {
-      setSignUpErrs(errs => [...errs, errors]);
+      setLoginErrs(errs => [...errs, errors]);
     }
   }
 
@@ -85,7 +84,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <RoutesList signUp={signUp} login={login} signUpErrs={signUpErrs}/>
+        <RoutesList 
+          signUp={signUp}
+          login={login}
+          signUpErrs={signUpErrs}
+          loginErrs={loginErrs}
+        />
       </BrowserRouter>
     </div>
   );
