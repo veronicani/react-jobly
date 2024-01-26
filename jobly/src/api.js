@@ -75,7 +75,7 @@ class JoblyApi {
   }
 
 
-  /** Registers user with form data
+  /** Registers user with form data and stores token in API
    *
    *  formData: { username, password, firstName, lastName, email }
    */
