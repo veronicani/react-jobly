@@ -46,6 +46,7 @@ function LoginForm({ login }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
+      console.log('Inside LoginForm handleSubmit', formData);
       await login(formData);
       navigate("/");
     } catch (err) {
