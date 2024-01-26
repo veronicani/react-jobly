@@ -24,28 +24,9 @@ const DEFAULT_USER_DATA = {
  * App -> { Navbar, RoutesList }
  */
 function App() {
-
   const [userData, setUserData] = useState({DEFAULT_USER_DATA});
-  const [storedToken, setStoredToken] = useState("");
   const [signupLoginErrs, setSignupLoginErrs] = useState([]);
-
-
-  // On every token state change, makes a new request to Jobly API to get new
-  // user data. Updates the user data state to reflect new logged in user.
-
-  useEffect(function fetchNewUserOnTokenChange() {
-    async function fetchNewUser() {
-      const { user } = await JoblyApi.getUser(username);
-      setUserData(uData => ({
-        username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-      }));
-    }
-    fetchNewUser();
-  }, [storedToken]);
-  // TODO: do this work in signup/login
+  const [loginErrs, setloginErrs] = useState([]);
 
   /** signUp: Registers the user with the SignUpForm data.
    * On success, receives token, and stores token, user's username,
@@ -53,20 +34,22 @@ function App() {
    *
    * On failure, recieves error messages, and stores in state to pass to
    * SignUpForm.
-   *
-  */
+   */
 
   async function signUp(formData) {
     const { username, password, firstName, lastName, email } = formData;
     const response = await JoblyApi
       .registerUser(username, password, firstName, lastName, email);
 
-    if (response.token) {
-      setStoredToken(response.token);
-      // TODO: don't need previous state
-      // TODO: can fetch user data here and set state
+    if (response.status === "ok") {
+      setUserData({
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+      });
     } else {
-      setSignupLoginErrs(errs => [...errs, response.errors]);
+      setSignupErrs(errs => [...errs, response.errors]);
     }
   }
 
@@ -99,7 +82,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <RoutesList handleSignUp={signUp} handleLogin={login}/>
+        <RoutesList signUp={signUp} login={login}/>
       </BrowserRouter>
     </div>
   );
