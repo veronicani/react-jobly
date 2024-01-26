@@ -49,7 +49,7 @@ class JoblyApi {
 
   static async getCompanies(searchTerm) {
     const res = searchTerm
-      ? await this.request('companies', {nameLike: searchTerm})
+      ? await this.request('companies', { nameLike: searchTerm })
       : await this.request('companies');
 
     return res.companies;
@@ -68,61 +68,48 @@ class JoblyApi {
 
   static async getJobs(searchTerm) {
     const res = searchTerm
-       ? await this.request('jobs', {title: searchTerm})
-       : await this.request('jobs');
+      ? await this.request('jobs', { title: searchTerm })
+      : await this.request('jobs');
 
     return res.jobs;
   }
 
 
   /** Registers user with form data --
-   *    On success, stores response token in API and returns the token.
-   *    On failure, returns the response error messages.
+   *    Makes a request for a user token and stores the token.
    *
    *  formData: { username, password, firstName, lastName, email }
    */
 
   static async registerUser(username, password, firstName, lastName, email) {
-    const data = {username, password, firstName, lastName, email};
-      const res = await this.request(`auth/register`, data, "POST");
-      JoblyApi.token = res.token;
-      return {status: "ok"};
+    const data = { username, password, firstName, lastName, email };
+    const res = await this.request(`auth/register`, data, "POST");
+    JoblyApi.token = res.token;
   }
 
 
-  /** Logins user. Makes a request for a user token. On success, stores the
+  /** Login user. Makes a request for a user token. Stores the
    * token to be used for future requests, and makes another request for
-   * the logged in user data. Returns the firstName, lastName, and email of the
-   * user.
-   *
-   * On failure, returns the response error messages.
+   * the logged in user data. 
+   * Returns the firstName, lastName, and email of the user.
   */
 
   static async loginUser(username, password) {
     const data = { username, password };
 
-    try {
-      const res = await this.request(`auth/token`, data, "POST");
-      JoblyApi.token = res.token;
-      const { firstName, lastName, email } = await this.getUser(username);
-      return { firstName, lastName, email };
-    } catch (err) {
-      return { errors: [...err] };
-    }
+    const res = await this.request(`auth/token`, data, "POST");
+    JoblyApi.token = res.token;
+    const { firstName, lastName, email } = await this.getUser(username);
+    return { firstName, lastName, email };
   }
 
 
-  /** Gets user */
+  /** Gets user. Returns user data: 
+   *  {username, firstName, lastName, email, isAdmin, applications: []} */
 
   static async getUser(username) {
-
-    let res;
-    try {
-      res = await this.request(`users/${username}`);
-      return res;
-    } catch (err) {
-      return { errors: [...res.error.message] };
-    }
+    const user = await this.request(`users/${username}`);
+    return user;
   }
 
 }
