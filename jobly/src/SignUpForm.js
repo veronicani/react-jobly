@@ -21,7 +21,7 @@ const DEFAULT_FORM_DATA = {
  *  RoutesList -> SignUpForm -> Alert
  */
 
-function SignUpForm({ handleSignUp }) {
+function SignUpForm({ signUp }) {
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
 
   const { username, password, firstName, lastName, email } = formData;
@@ -38,7 +38,7 @@ function SignUpForm({ handleSignUp }) {
   /** Calls parent function and clears form */
   function handleSubmit(evt) {
     evt.preventDefault();
-    handleSignUp(formData);
+    signUp(formData);
     setFormData(DEFAULT_FORM_DATA);
   }
 
