@@ -86,10 +86,10 @@ class JoblyApi {
     const data = {username, password, firstName, lastName, email};
     try {
       const res = await this.request(`auth/register`, data, "POST");
-      token = res.token;
-      return { token };
+      JoblyApi.token = res.token;
+      return {status: "ok"};
     } catch (err) {
-      return { errors: [...res.error.message] };
+      return { errors: [...err] };
     }
   }
 
