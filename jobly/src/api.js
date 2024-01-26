@@ -98,24 +98,14 @@ class JoblyApi {
 
   static async loginUser(username, password) {
     const data = { username, password };
+
     try {
       const res = await this.request(`auth/token`, data, "POST");
       JoblyApi.token = res.token;
-      // TODO: this
-      token = res.token;
-      // TODO: ^ not right, making var
-      console.log('token: ', token);
-      console.log('JoblyApi.token: ', JoblyApi.token);
-
-
-      // after JoblyApi.token = res.token, use JoblyApi.token to get user
-      // details using getUser fn here
-
-      this.getUser(username);
-
-      return { token };
+      const { firstName, lastName, email } = await this.getUser(username);
+      return { firstName, lastName, email };
     } catch (err) {
-      return { errors: [...res.error.message] };
+      return { errors: [...err] };
     }
   }
 
@@ -123,8 +113,11 @@ class JoblyApi {
   /** Gets user */
 
   static async getUser(username) {
+
+    let res;
     try {
-      const res = await this.request(`users/${username}`);
+      res = await this.request(`users/${username}`);
+      return res;
     } catch (err) {
       return { errors: [...res.error.message] };
     }
