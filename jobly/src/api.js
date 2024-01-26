@@ -74,6 +74,25 @@ class JoblyApi {
     return res.jobs;
   }
 
+
+  /** Registers user with form data
+   *
+   *  formData: { username, password, firstName, lastName, email }
+   */
+
+  static async registerUser(username, password, firstName, lastName, email) {
+    const res = await this.request(`auth/register`, formData, "POST");
+    token = res.token;
+    return res.token;
+  }
+
+
+  /** Logins user */
+
+  // static async loginUser({formData}) {
+
+  // }
+
 }
 
 export default JoblyApi;
