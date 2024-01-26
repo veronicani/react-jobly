@@ -20,13 +20,9 @@ const DEFAULT_FORM_DATA = {
  *  RoutesList -> LoginForm -> Alert
  */
 
-function LoginForm({ login, loginErrs }) {
-  console.log("loginErrs: ", loginErrs);
+function LoginForm({ login }) {
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
   const { username, password } = formData;
-
-  const navigate = useNavigate();
-  //TODO: if there is a user, navigate to the homepage
 
   /** Updates form values with user input */
   function handleChange(evt) {
@@ -71,7 +67,7 @@ function LoginForm({ login, loginErrs }) {
         </div>
         <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}
       </form>
-      <Alert message={loginErrs.toString()}/>
+      <Alert message={"TODO"}/>
     </div>
 
   );
