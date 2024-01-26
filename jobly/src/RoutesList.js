@@ -19,7 +19,7 @@ import CompanyDetail from "./CompanyDetail";
  *  App -> RoutesList -> { Homepage, CompanyList, JobList, CompanyDetail }
 */
 
-function RoutesList({ signUp, login }) {
+function RoutesList({ signUp, login, signUpErrs }) {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
@@ -28,7 +28,7 @@ function RoutesList({ signUp, login }) {
       <Route path="/jobs" element={<JobList />} />
 
       <Route path="/login" element={<LoginForm login={login}/>} />
-      <Route path="/signup" element={<SignUpForm signUp={signUp}/>} />
+      <Route path="/signup" element={<SignUpForm signUp={signUp} signUpErrs={signUpErrs}/>} />
       <Route path="/profile" element={<ProfileForm />} />
 
       <Route path="*" element={<Navigate to={"/"} />} />
