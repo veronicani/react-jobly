@@ -31,15 +31,23 @@ function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
   return (
     <div className="RoutesList">
       <Routes>
-        {/* can add homepage here */}
-        {!username &&
+        <Route path="/" element={<Homepage />} />
+
+        {/* if user signed in, these routes available */}
+        {username &&
           <>
             <Route path="/companies" element={<CompanyList />} />
             <Route path="/companies/:handle" element={<CompanyDetail />} />
             <Route path="/jobs" element={<JobList />} />
             <Route path="/profile" element={<ProfileForm />} />
-            <Route path="/login" element={<LoginForm login={login}/>} />
-            <Route 
+          </>
+        }
+
+        {/* if no user signed in, these routes available */}
+        {!username &&
+          <>
+            <Route path="/login" element={<LoginForm login={login} />} />
+            <Route
               path="/signup"
               element={<SignUpForm
                 signUp={signUp}
@@ -47,40 +55,10 @@ function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
             />
           </>
         }
+
+        <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </div>
-
-
-
-    // {username && (
-    //   <Routes>
-    //     <Route path="/companies" element={<CompanyList />} />
-    //     <Route path="/companies/:handle" element={<CompanyDetail />} />
-    //     <Route path="/jobs" element={<JobList />} />
-    //     <Route path="/profile" element={<ProfileForm />} />
-    //   </Routes>
-    // )}
-
-    // {!user.username &&
-    //   <Routes>
-    //       <Route
-    //       path="/login"
-    //       element={<LoginForm
-    //       login={login}
-    //       loginErrs={loginErrs}/>}
-    //     />
-    //     <Route
-    //       path="/signup"
-    //       element={<SignUpForm
-    //       signUp={signUp}
-    //       logout={logout}
-    //       signUpErrs={signUpErrs}/>}
-    //     />
-    //     </Routes>
-    // }
-    // <Route path="/" element={<Homepage />} />
-    //
-    // <Route path="*" element={<Navigate to={"/"} />} />
   );
 }
 
