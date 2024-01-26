@@ -33,6 +33,9 @@ function SignUpForm({ signUp, logout, signUpErrs = [], userData = DEFAULT_FORM_D
 
   const [formData, setFormData] = useState(userData);
 
+  const [errs, setErrs] = useState([]);
+
+
   const { username, password, firstName, lastName, email } = formData;
 
   const { user } = useContext(userContext);
@@ -40,9 +43,10 @@ function SignUpForm({ signUp, logout, signUpErrs = [], userData = DEFAULT_FORM_D
   console.log("user from useContext: ", user);
 
   const navigate = useNavigate();
-  if (user.username) {
-    navigate("/");
-  }
+  // if (user.username) {
+  //   navigate("/");
+  // }
+  // TODO: ^ now not needed
 
   /** Updates form values with user input */
   function handleChange(evt) {
@@ -54,14 +58,25 @@ function SignUpForm({ signUp, logout, signUpErrs = [], userData = DEFAULT_FORM_D
   }
 
   /** Calls parent function and clears form */
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signUp(formData);
+    try {
+      await signUp(formData);
+      navigate("/");
+    } catch (err) {
+      // TODO: here's where you can set errors to errs state
+    }
+
+
+    // TODO: handle API err here? 2 of 2
+
     setFormData(DEFAULT_FORM_DATA);
+    // TODO: not needed, goes away before clearing form data. GET RID OF IT^
   }
 
   return (
     <div className="SignUpForm-wrapper">
+      {/* TODO: if there are errors, show errors here */}
       <form className="SignUpForm" onSubmit={handleSubmit}>
 
         <div className="SignUpForm-username">

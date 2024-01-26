@@ -28,7 +28,7 @@ const DEFAULT_USER_DATA = {
  */
 function App() {
   const [userData, setUserData] = useState({ DEFAULT_USER_DATA });
-  const [signUpErrs, setSignUpErrs] = useState([]);
+  // const [signUpErrs, setSignUpErrs] = useState([]);
   const [loginErrs, setLoginErrs] = useState([]);
 
 
@@ -48,17 +48,18 @@ function App() {
     const { username, password, firstName, lastName, email } = formData;
     const response = await JoblyApi
       .registerUser(username, password, firstName, lastName, email);
+    // TODO: handle API err here? 1 of 2
 
-    if (response.status === "ok") {
+    // if (response.status === "ok") {
       setUserData({
         username: username,
         firstName: firstName,
         lastName: lastName,
         email: email,
       });
-    } else {
-      setSignUpErrs(errs => [...errs, response.errors]);
-    }
+    // } else {
+    //   setSignUpErrs(errs => [...errs, response.errors]);
+    // }
   }
 
   /** login: Logins the user with the LoginForm data.

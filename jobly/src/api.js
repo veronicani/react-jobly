@@ -1,4 +1,4 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001/blah";
 
 /** API Class.
  *
@@ -84,21 +84,17 @@ class JoblyApi {
 
   static async registerUser(username, password, firstName, lastName, email) {
     const data = {username, password, firstName, lastName, email};
-    try {
       const res = await this.request(`auth/register`, data, "POST");
       JoblyApi.token = res.token;
       return {status: "ok"};
-    } catch (err) {
-      return { errors: [...err] };
-    }
   }
 
 
-  /** Logins user. Makes a request for a user token. On success, stores the 
-   * token to be used for future requests, and makes another request for 
-   * the logged in user data. Returns the firstName, lastName, and email of the 
+  /** Logins user. Makes a request for a user token. On success, stores the
+   * token to be used for future requests, and makes another request for
+   * the logged in user data. Returns the firstName, lastName, and email of the
    * user.
-   * 
+   *
    * On failure, returns the response error messages.
   */
 

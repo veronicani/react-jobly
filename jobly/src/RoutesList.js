@@ -29,13 +29,36 @@ function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
   const { username } = user;
 
   return (
+    <div className="RoutesList">
+      <Routes>
+        {/* can add homepage here */}
+        {!username &&
+          <>
+            <Route path="/companies" element={<CompanyList />} />
+            <Route path="/companies/:handle" element={<CompanyDetail />} />
+            <Route path="/jobs" element={<JobList />} />
+            <Route path="/profile" element={<ProfileForm />} />
+            <Route
+              path="/login"
+              element={<LoginForm
+                login={login}
+                loginErrs={loginErrs} />}
+            />
+            <Route
+              path="/signup"
+              element={<SignUpForm
+                signUp={signUp}
+                logout={logout}
+                signUpErrs={signUpErrs} />}
+            />
+          </>
+        }
+      </Routes>
+    </div>
 
 
 
-
-
-
-    // { username && (
+    // {username && (
     //   <Routes>
     //     <Route path="/companies" element={<CompanyList />} />
     //     <Route path="/companies/:handle" element={<CompanyDetail />} />
@@ -44,28 +67,28 @@ function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
     //   </Routes>
     // )}
 
-      // {!user.username &&
-      //   <Routes>
-      //       <Route
-      //       path="/login"
-      //       element={<LoginForm
-      //       login={login}
-      //       loginErrs={loginErrs}/>}
-      //     />
-      //     <Route
-      //       path="/signup"
-      //       element={<SignUpForm
-      //       signUp={signUp}
-      //       logout={logout}
-      //       signUpErrs={signUpErrs}/>}
-      //     />
-      //     </Routes>
-      // }
-      // <Route path="/" element={<Homepage />} />
-      //
-      // <Route path="*" element={<Navigate to={"/"} />} />
-  )
+    // {!user.username &&
+    //   <Routes>
+    //       <Route
+    //       path="/login"
+    //       element={<LoginForm
+    //       login={login}
+    //       loginErrs={loginErrs}/>}
+    //     />
+    //     <Route
+    //       path="/signup"
+    //       element={<SignUpForm
+    //       signUp={signUp}
+    //       logout={logout}
+    //       signUpErrs={signUpErrs}/>}
+    //     />
+    //     </Routes>
+    // }
+    // <Route path="/" element={<Homepage />} />
+    //
+    // <Route path="*" element={<Navigate to={"/"} />} />
+  );
 }
 
 
-export default RoutesList;
+export default RoutesList;;;
