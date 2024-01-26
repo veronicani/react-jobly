@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./SignUpForm.css";
-
+import { useNavigate } from "react-router-dom";
 
 const DEFAULT_FORM_DATA = {
   username: "",
@@ -21,10 +21,12 @@ const DEFAULT_FORM_DATA = {
  *  RoutesList -> SignUpForm -> Alert
  */
 
-function SignUpForm({ signUp }) {
-  const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
+function SignUpForm({ signUp, signUpErrs = [], userData = DEFAULT_FORM_DATA }) {
+  const [formData, setFormData] = useState(userData);
 
   const { username, password, firstName, lastName, email } = formData;
+
+  const navigate = useNavigate();
 
   /** Updates form values with user input */
   function handleChange(evt) {
@@ -40,6 +42,9 @@ function SignUpForm({ signUp }) {
     evt.preventDefault();
     signUp(formData);
     setFormData(DEFAULT_FORM_DATA);
+    if (signUpErrs.length === 0) {
+      navigate("/");
+    }
   }
 
   return (
@@ -60,6 +65,7 @@ function SignUpForm({ signUp }) {
         <div className="SignUpForm-password">
           <label htmlFor="SignUpForm-input-password">Password: </label>
           <input
+            type="password"
             id="SignUpForm-input-password"
             name="password"
             placeholder="Password"
@@ -103,6 +109,9 @@ function SignUpForm({ signUp }) {
         </div>
 
         <button className="SignUpForm-signup-btn">SUBMIT</button>
+
+        {signUpErrs.length > 0 &&
+        <p>{signUpErrs.toString()}</p>}
 
       </form>
     </div>
