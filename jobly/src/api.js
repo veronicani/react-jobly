@@ -96,9 +96,27 @@ class JoblyApi {
 
   /** Logins user */
 
-  // static async loginUser({formData}) {
+  static async loginUser(username, password) {
+    const data = { username, password };
+    try {
+      const res = await this.request(`auth/token`, data, "POST");
+      token = res.token;
+      return { token };
+    } catch (err) {
+      return { errors: [...res.error.message] };
+    }
+  }
 
-  // }
+
+  /** Gets user */
+
+  static async getUser(username) {
+    try {
+      const res = await this.request(`users/${username}`);
+    } catch (err) {
+      return { errors: [...res.error.message] };
+    }
+  }
 
 }
 

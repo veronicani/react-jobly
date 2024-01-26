@@ -8,7 +8,6 @@ import LoginForm from "./LoginForm";
 import JoblyApi from "./api";
 
 const DEFAULT_USER_DATA = {
-  token: "",
   username: "",
   firstName: "",
   lastName: "",
@@ -25,7 +24,24 @@ const DEFAULT_USER_DATA = {
  */
 function App() {
   const [userData, setUserData] = useState({DEFAULT_USER_DATA});
+  const [storedToken, setStoredToken] = useState("");
   const [signupLoginErrs, setSignupLoginErrs] = useState([]);
+
+
+  // On every token state change, makes a new request to Jobly API to get new
+  // user data. Updates the user data state to reflect new logged in user.
+  useEffect(function fetchNewUserOnTokenChange() {
+    async function fetchNewUser() {
+      const { user } = await JoblyApi.getUser(username);
+      setUserData(uData => ({
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      }));
+    }
+    fetchNewUser();
+  }, [storedToken]);
 
   /** signUp: Registers the user with the SignUpForm data.
    * On success, receives token, and stores token, user's username,
@@ -42,36 +58,36 @@ function App() {
       .registerUser(username, password, firstName, lastName, email);
 
     if (response.token) {
-      setUserData(uData => ({
-        username: username,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        token: receivedToken,
-      }));
+      setStoredToken(currToken => currToken = response.token);
     } else {
       setSignupLoginErrs(errs => [...errs, response.errors]);
     }
   }
 
-  /** login: */
+  /** login: Logins the user with the LoginForm data.
+   *  On success, receives token.
+   *  On failure, receives error messages, and stores in state to pass to
+   *  LoginForm.
+  */
+
   async function login(formData) {
     const { username, password } = formData;
+    const response = await JoblyApi.loginUser(username, password);
 
+    if (response.token) {
+      setStoredToken(currToken => currToken = response.token);
+      setUs
+    } else {
+      setSignupLoginErrs(errs => [...errs, response.errors]);
+    }
   }
-
-
-
-
-
-
 
 
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <RoutesList handleSignUp={signUp}/>
+        <RoutesList handleSignUp={signUp} handleLogin={login}/>
       </BrowserRouter>
     </div>
   );
