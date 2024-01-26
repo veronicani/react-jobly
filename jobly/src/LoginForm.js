@@ -18,7 +18,7 @@ const DEFAULT_FORM_DATA = {
  *  RoutesList -> LoginForm -> Alert
  */
 
-function LoginForm({ handleLogin }) {
+function LoginForm({ login }) {
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
 
   const { username, password } = formData;
@@ -35,7 +35,7 @@ function LoginForm({ handleLogin }) {
   /** Calls parent function and clears form */
   function handleSubmit(evt) {
     evt.preventDefault();
-    handleLogin(formData);
+    login(formData);
     setFormData(DEFAULT_FORM_DATA);
   }
 
