@@ -3,6 +3,9 @@ import "./SignUpForm.css";
 import { useNavigate } from "react-router-dom";
 import Alert from "./Alert";
 
+import { useContext } from "react";
+import userContext from "./userContext";
+
 const DEFAULT_FORM_DATA = {
   username: "",
   password: "",
@@ -22,13 +25,24 @@ const DEFAULT_FORM_DATA = {
  *  RoutesList -> SignUpForm -> Alert
  */
 
-function SignUpForm({ signUp, signUpErrs = [], userData = DEFAULT_FORM_DATA }) {
+function SignUpForm({ signUp, logout, signUpErrs = [], userData = DEFAULT_FORM_DATA }) {
+
+  // FIXME: needs to log out current user if logged in user wants to go to
+  // "/signup" route
+  // logout();
+
   const [formData, setFormData] = useState(userData);
 
   const { username, password, firstName, lastName, email } = formData;
 
+  const { user } = useContext(userContext);
+
+  console.log("user from useContext: ", user);
+
   const navigate = useNavigate();
-  //TODO: if there is a user, navigate to the homepage
+  if (user.username) {
+    navigate("/");
+  }
 
   /** Updates form values with user input */
   function handleChange(evt) {

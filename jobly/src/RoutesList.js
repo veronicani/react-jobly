@@ -9,6 +9,9 @@ import JobList from "./JobList";
 import CompanyList from "./CompanyList";
 import CompanyDetail from "./CompanyDetail";
 
+import { useContext } from "react";
+import userContext from "./userContext";
+
 
 /** RoutesList: list of routes for Jobly app.
  *
@@ -19,30 +22,48 @@ import CompanyDetail from "./CompanyDetail";
  *  App -> RoutesList -> { Homepage, CompanyList, JobList, CompanyDetail }
 */
 
-function RoutesList({ signUp, login, signUpErrs, loginErrs }) {
+function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
+
+  const { user } = useContext(userContext);
+
+  const { username } = user;
+
   return (
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/companies" element={<CompanyList />} />
-      <Route path="/companies/:handle" element={<CompanyDetail />} />
-      <Route path="/jobs" element={<JobList />} />
 
-      <Route 
-        path="/login" 
-        element={<LoginForm 
-        login={login}
-        loginErrs={loginErrs}/>}
-      />
-      <Route 
-        path="/signup"
-        element={<SignUpForm
-        signUp={signUp}
-        signUpErrs={signUpErrs}/>}
-      />
-      <Route path="/profile" element={<ProfileForm />} />
 
-      <Route path="*" element={<Navigate to={"/"} />} />
-    </Routes>
+
+
+
+
+    // { username && (
+    //   <Routes>
+    //     <Route path="/companies" element={<CompanyList />} />
+    //     <Route path="/companies/:handle" element={<CompanyDetail />} />
+    //     <Route path="/jobs" element={<JobList />} />
+    //     <Route path="/profile" element={<ProfileForm />} />
+    //   </Routes>
+    // )}
+
+      // {!user.username &&
+      //   <Routes>
+      //       <Route
+      //       path="/login"
+      //       element={<LoginForm
+      //       login={login}
+      //       loginErrs={loginErrs}/>}
+      //     />
+      //     <Route
+      //       path="/signup"
+      //       element={<SignUpForm
+      //       signUp={signUp}
+      //       logout={logout}
+      //       signUpErrs={signUpErrs}/>}
+      //     />
+      //     </Routes>
+      // }
+      // <Route path="/" element={<Homepage />} />
+      //
+      // <Route path="*" element={<Navigate to={"/"} />} />
   )
 }
 

@@ -2,6 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import { useState, useEffect } from "react";
 
+import userContext from "./userContext";
+
+
 import Navbar from "./Navbar";
 import RoutesList from "./RoutesList";
 
@@ -13,7 +16,7 @@ const DEFAULT_USER_DATA = {
   firstName: "",
   lastName: "",
   email: "",
-}
+};
 
 /** Jobly App.
  *
@@ -24,13 +27,13 @@ const DEFAULT_USER_DATA = {
  * App -> { Navbar, RoutesList }
  */
 function App() {
-  const [userData, setUserData] = useState({DEFAULT_USER_DATA});
+  const [userData, setUserData] = useState({ DEFAULT_USER_DATA });
   const [signUpErrs, setSignUpErrs] = useState([]);
   const [loginErrs, setLoginErrs] = useState([]);
 
 
   console.log("This is userData: ", userData);
-  console.log('This is signUpErrs: ', signUpErrs);
+  // console.log('This is signUpErrs: ', signUpErrs);
 
   /** signUp: Registers the user with the SignUpForm data.
    * On success, stores user's username, first name, last name,
@@ -41,6 +44,7 @@ function App() {
    */
 
   async function signUp(formData) {
+
     const { username, password, firstName, lastName, email } = formData;
     const response = await JoblyApi
       .registerUser(username, password, firstName, lastName, email);
@@ -64,6 +68,7 @@ function App() {
   */
 
   async function login(formData) {
+
     const { username, password } = formData;
     const { firstName, lastName, email, errors } = (
       await JoblyApi.loginUser(username, password));
@@ -73,24 +78,37 @@ function App() {
         firstName: firstName,
         lastName: lastName,
         email: email,
-      })
+      });
     } else {
       setLoginErrs(errs => [...errs, errors]);
     }
+  }
+
+  /** logout: logs out user when entering signup form and clicking logout
+   *  button
+   */
+
+  function logout() {
+    setUserData(DEFAULT_USER_DATA);
   }
 
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
-        <RoutesList 
-          signUp={signUp}
-          login={login}
-          signUpErrs={signUpErrs}
-          loginErrs={loginErrs}
-        />
+        <userContext.Provider value={{ user: userData }}>
+
+          <Navbar />
+          <RoutesList
+            signUp={signUp}
+            login={login}
+            logout={logout}
+            signUpErrs={signUpErrs}
+            loginErrs={loginErrs}
+          />
+        </userContext.Provider>
       </BrowserRouter>
+
     </div>
   );
 }
