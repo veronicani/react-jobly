@@ -55,11 +55,18 @@ function App() {
 
   async function login(formData) {
 
+
     const { username, password } = formData;
+    console.log('top of login fn, username, password: ', username, password)
+
+
     const { firstName, lastName, email } = (
       await JoblyApi.loginUser(username, password));
 
+    console.log("After JoblyApi login fn: ", firstName, lastName, email);
+
     setUserData({
+      username: username,
       firstName: firstName,
       lastName: lastName,
       email: email,
