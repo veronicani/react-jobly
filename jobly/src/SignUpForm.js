@@ -45,9 +45,10 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
   }
 
   /** Calls parent function.
-   * On success, redirects to homepage on success. 
+   * On success, redirects to homepage.
    * On failure, updates the state with the error messages.
-   **/
+   */
+
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
@@ -121,9 +122,9 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
 
         <button className="SignUpForm-signup-btn">SUBMIT</button>
       </form>
-  
+
       {errs.map((err, i) => <Alert key={i} message={err}/>)}
-      
+
     </div>
 
   );
