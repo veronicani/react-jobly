@@ -25,28 +25,13 @@ const DEFAULT_FORM_DATA = {
  *  RoutesList -> SignUpForm -> Alert
  */
 
-function SignUpForm({ signUp, logout, signUpErrs = [], userData = DEFAULT_FORM_DATA }) {
-
-  // FIXME: needs to log out current user if logged in user wants to go to
-  // "/signup" route
-  // logout();
-
+function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
   const [formData, setFormData] = useState(userData);
-
   const [errs, setErrs] = useState([]);
-
 
   const { username, password, firstName, lastName, email } = formData;
 
-  const { user } = useContext(userContext);
-
-  console.log("user from useContext: ", user);
-
   const navigate = useNavigate();
-  // if (user.username) {
-  //   navigate("/");
-  // }
-  // TODO: ^ now not needed
 
   /** Updates form values with user input */
   function handleChange(evt) {
