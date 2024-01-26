@@ -81,7 +81,9 @@ function App() {
       // setStoredToken(currToken => currToken = response.token);
       // JoblyApi.token = response.token;
       // TODO: can store token in class instead of keeping it in state
-      // setUs
+
+      // if token is good, get user details here
+
     } else {
       setSignupLoginErrs(errs => [...errs, response.errors]);
     }

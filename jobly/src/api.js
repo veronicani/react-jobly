@@ -106,6 +106,13 @@ class JoblyApi {
       // TODO: ^ not right, making var
       console.log('token: ', token);
       console.log('JoblyApi.token: ', JoblyApi.token);
+
+
+      // after JoblyApi.token = res.token, use JoblyApi.token to get user
+      // details using getUser fn here
+
+      this.getUser(username);
+
       return { token };
     } catch (err) {
       return { errors: [...res.error.message] };
