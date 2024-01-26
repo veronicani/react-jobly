@@ -100,7 +100,12 @@ class JoblyApi {
     const data = { username, password };
     try {
       const res = await this.request(`auth/token`, data, "POST");
+      JoblyApi.token = res.token;
+      // TODO: this
       token = res.token;
+      // TODO: ^ not right, making var
+      console.log('token: ', token);
+      console.log('JoblyApi.token: ', JoblyApi.token);
       return { token };
     } catch (err) {
       return { errors: [...res.error.message] };

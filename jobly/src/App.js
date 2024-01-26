@@ -24,7 +24,7 @@ const DEFAULT_USER_DATA = {
  */
 function App() {
   const [userData, setUserData] = useState({DEFAULT_USER_DATA});
-  const [storedToken, setStoredToken] = useState("");
+  // const [storedToken, setStoredToken] = useState("");
   const [signupLoginErrs, setSignupLoginErrs] = useState([]);
 
 
@@ -42,6 +42,7 @@ function App() {
     }
     fetchNewUser();
   }, [storedToken]);
+  // TODO: do this work in signup/login
 
   /** signUp: Registers the user with the SignUpForm data.
    * On success, receives token, and stores token, user's username,
@@ -58,7 +59,9 @@ function App() {
       .registerUser(username, password, firstName, lastName, email);
 
     if (response.token) {
-      setStoredToken(currToken => currToken = response.token);
+      setStoredToken(response.token);
+      // TODO: don't need previous state
+      // TODO: can fetch user data here and set state
     } else {
       setSignupLoginErrs(errs => [...errs, response.errors]);
     }
@@ -75,8 +78,10 @@ function App() {
     const response = await JoblyApi.loginUser(username, password);
 
     if (response.token) {
-      setStoredToken(currToken => currToken = response.token);
-      setUs
+      // setStoredToken(currToken => currToken = response.token);
+      // JoblyApi.token = response.token;
+      // TODO: can store token in class instead of keeping it in state
+      // setUs
     } else {
       setSignupLoginErrs(errs => [...errs, response.errors]);
     }
