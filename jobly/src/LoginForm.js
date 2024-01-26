@@ -22,7 +22,11 @@ const DEFAULT_FORM_DATA = {
 
 function LoginForm({ login }) {
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
+  const [errs, setErrs] = useState([]);
+
   const { username, password } = formData;
+
+  const navigate = useNavigate();
 
   /** Updates form values with user input */
   function handleChange(evt) {
@@ -33,11 +37,20 @@ function LoginForm({ login }) {
     }));
   }
 
-  /** Calls parent function and clears form */
-  function handleSubmit(evt) {
+  /** Calls parent function.
+   *
+   *  On success, redirects to homepage.
+   *  On failure, updates the state with the error messages.
+   */
+
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    login(formData);
-    setFormData(DEFAULT_FORM_DATA);
+    try {
+      await login(formData);
+      navigate("/");
+    } catch (err) {
+      setErrs(err);
+    }
   }
 
   return (
@@ -57,6 +70,7 @@ function LoginForm({ login }) {
         <div className="LoginForm-password">
           <label htmlFor="LoginForm-input-password">Password: </label>
           <input
+            type="password"
             id="LoginForm-input-password"
             name="password"
             placeholder="Password"
@@ -67,7 +81,10 @@ function LoginForm({ login }) {
         </div>
         <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}
       </form>
-      <Alert message={"TODO"}/>
+
+
+      {errs.map((err, i) => <Alert key={i} message={err} />)}
+
     </div>
 
   );
