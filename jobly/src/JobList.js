@@ -78,7 +78,7 @@ function JobList() {
   //it show the same state? or load all jobs?
 
   return (
-    <div>
+    <div className="JobList">
       <SearchBar search={search} searchTerm={searchedTerm.term}/>
       {jobList.data.length === 0 &&
       <div className="JobList-none">

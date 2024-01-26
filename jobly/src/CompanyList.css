@@ -42,3 +42,27 @@
   margin-top: 2rem;
   animation: slideIn 0.5s ease;
 }
+
+.CompanyList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  color: white;
+}
+
+/* https://coder-coder.com/background-image-opacity/ */
+.CompanyList::before {
+  content: "";
+  height: 100%;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/016/474/827/original/business-and-work-seamless-pattern-png.png");
+  background-size: 500px;
+  background-repeat: repeat;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: .35;
+  z-index: -1;
+}

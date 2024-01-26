@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./ProfileForm.css";
+
 
 const DEFAULT_FORM_DATA = {
   username: "GET USERNAME FROM CONTEXT",
@@ -41,53 +43,56 @@ function ProfileForm({ updateUserProfile }) {
   }
 
   return (
-    <form className="ProfileForm" onSubmit={handleSubmit}>
+    <div className="ProfileForm-wrapper">
+      <form className="ProfileForm" onSubmit={handleSubmit}>
 
-      <div className="ProfileForm-username">
-        <label htmlFor="ProfileForm-input-username">Username: </label>
-        <input
-          id="ProfileForm-input-username"
-          name="username"
-          value={username}
-          aria-label="Username"
-          disabled
-        />
-      </div>
-      <div className="ProfileForm-firstName">
-        <label htmlFor="ProfileForm-input-firstName">First Name: </label>
-        <input
-          id="ProfileForm-input-firstName"
-          name="firstName"
-          onChange={handleChange}
-          value={firstName}
-          aria-label="firstName"
-        />
-      </div>
-      <div className="ProfileForm-lastName">
-        <label htmlFor="ProfileForm-input-lastName">Last Name: </label>
-        <input
-          id="ProfileForm-input-lastName"
-          name="lastName"
-          onChange={handleChange}
-          value={lastName}
-          aria-label="lastName"
-        />
-      </div>
-      <div className="ProfileForm-email">
-        <label htmlFor="ProfileForm-input-email">Email: </label>
-        <input
-          id="ProfileForm-input-email"
-          name="email"
-          onChange={handleChange}
-          value={email}
-          aria-label="Email"
-        />
-      </div>
+        <div className="ProfileForm-username">
+          <label htmlFor="ProfileForm-input-username">Username: </label>
+          <input
+            id="ProfileForm-input-username"
+            name="username"
+            value={username}
+            aria-label="Username"
+            disabled
+          />
+        </div>
+        <div className="ProfileForm-firstName">
+          <label htmlFor="ProfileForm-input-firstName">First Name: </label>
+          <input
+            id="ProfileForm-input-firstName"
+            name="firstName"
+            onChange={handleChange}
+            value={firstName}
+            aria-label="firstName"
+          />
+        </div>
+        <div className="ProfileForm-lastName">
+          <label htmlFor="ProfileForm-input-lastName">Last Name: </label>
+          <input
+            id="ProfileForm-input-lastName"
+            name="lastName"
+            onChange={handleChange}
+            value={lastName}
+            aria-label="lastName"
+          />
+        </div>
+        <div className="ProfileForm-email">
+          <label htmlFor="ProfileForm-input-email">Email: </label>
+          <input
+            id="ProfileForm-input-email"
+            name="email"
+            onChange={handleChange}
+            value={email}
+            aria-label="Email"
+          />
+        </div>
 
-      <button className="ProfileForm-save-btn">Save Changes</button>
+        <button className="ProfileForm-save-btn">Save Changes</button>
 
-    </form>
-  )
+      </form>
+    </div>
+
+  );
 }
 
 

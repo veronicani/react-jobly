@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./LoginForm.css";
 
 
 const DEFAULT_FORM_DATA = {
@@ -39,33 +40,35 @@ function LoginForm({ handleLogin }) {
   }
 
   return (
-    <form className="LoginForm" onSubmit={handleSubmit}>
+    <div className="LoginForm-wrapper">
+      <form className="LoginForm" onSubmit={handleSubmit}>
+        <div className="LoginForm-username">
+          <label htmlFor="LoginForm-input-username">Username: </label>
+          <input
+            id="LoginForm-input-username"
+            name="username"
+            placeholder="Username"
+            onChange={handleChange}
+            value={username}
+            aria-label="Username"
+          />
+        </div>
+        <div className="LoginForm-password">
+          <label htmlFor="LoginForm-input-password">Password: </label>
+          <input
+            id="LoginForm-input-password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+            value={password}
+            aria-label="Password"
+          />
+        </div>
+        <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}
+      </form>
+    </div>
 
-      <div className="LoginForm-username">
-        <label htmlFor="LoginForm-input-username">Username: </label>
-        <input
-          id="LoginForm-input-username"
-          name="username"
-          placeholder="Username"
-          onChange={handleChange}
-          value={username}
-          aria-label="Username"
-        />
-      </div>
-      <div className="LoginForm-password">
-        <label htmlFor="LoginForm-input-password">Password: </label>
-        <input
-          id="LoginForm-input-password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          value={password}
-          aria-label="Password"
-        />
-      </div>
-      <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}
-    </form>
-  )
+  );
 }
 
 
