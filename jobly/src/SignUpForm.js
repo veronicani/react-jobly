@@ -17,10 +17,12 @@ const DEFAULT_FORM_DATA = {
 /** SignUpForm: Registers user.
  *
  *  Props:
- *  - handleSignUp(): function to call in parent
+ *  - signUp: function to call in parent
+ *  - userData
  *
  *  State:
  *  - formData
+ *  - errs
  *
  *  RoutesList -> SignUpForm -> Alert
  */
@@ -28,8 +30,6 @@ const DEFAULT_FORM_DATA = {
 function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
   const [formData, setFormData] = useState(userData);
   const [errs, setErrs] = useState([]);
-  console.log("SignUpForm: formData state: ", formData);
-  console.log("SignUpForm: errs state: ", errs);
 
   const { username, password, firstName, lastName, email } = formData;
 

@@ -15,7 +15,7 @@ import userContext from "./userContext";
 
 /** RoutesList: list of routes for Jobly app.
  *
- *  Props: none
+ *  Props: signUp, login
  *
  *  State: none
  *

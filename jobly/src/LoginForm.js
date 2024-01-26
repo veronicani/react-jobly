@@ -12,10 +12,11 @@ const DEFAULT_FORM_DATA = {
 /** LoginForm: Logs in user.
  *
  *  Props:
- *  - handleLogin(): function to call in parent
+ *  - login: function to call in parent
  *
  *  State:
  *  - formData
+ *  - errs
  *
  *  RoutesList -> LoginForm -> Alert
  */

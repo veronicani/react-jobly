@@ -6,7 +6,7 @@ import userContext from "./userContext";
 
 /** Navbar: component for Jobly app
  *
- *  Props: none
+ *  Props: logout
  *
  *  State: none
  *
