@@ -27,13 +27,13 @@ function App() {
   const [userData, setUserData] = useState({DEFAULT_USER_DATA});
   const [signupLoginErrs, setSignupLoginErrs] = useState([]);
 
-  /** signUp: Registers the user with the SignUpForm data. 
+  /** signUp: Registers the user with the SignUpForm data.
    * On success, receives token, and stores token, user's username,
    *    first name, last name, and email in userData.
-   * 
+   *
    * On failure, recieves error messages, and stores in state to pass to
    * SignUpForm.
-   *    
+   *
   */
 
   async function signUp(formData) {
@@ -54,9 +54,10 @@ function App() {
     }
   }
 
-  /** login:  */
+  /** login: */
   async function login(formData) {
     const { username, password } = formData;
+
   }
 
 
