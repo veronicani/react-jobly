@@ -38,18 +38,12 @@ function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
             <Route path="/companies/:handle" element={<CompanyDetail />} />
             <Route path="/jobs" element={<JobList />} />
             <Route path="/profile" element={<ProfileForm />} />
-            <Route
-              path="/login"
-              element={<LoginForm
-                login={login}
-                loginErrs={loginErrs} />}
-            />
-            <Route
+            <Route path="/login" element={<LoginForm login={login}/>} />
+            <Route 
               path="/signup"
               element={<SignUpForm
                 signUp={signUp}
-                logout={logout}
-                signUpErrs={signUpErrs} />}
+                logout={logout} />}
             />
           </>
         }
