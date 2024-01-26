@@ -94,7 +94,13 @@ class JoblyApi {
   }
 
 
-  /** Logins user */
+  /** Logins user. Makes a request for a user token. On success, stores the 
+   * token to be used for future requests, and makes another request for 
+   * the logged in user data. Returns the firstName, lastName, and email of the 
+   * user.
+   * 
+   * On failure, returns the response error messages.
+  */
 
   static async loginUser(username, password) {
     const data = { username, password };
