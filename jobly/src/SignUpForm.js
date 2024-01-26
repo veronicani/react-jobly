@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./SignUpForm.css";
 import { useNavigate } from "react-router-dom";
+import Alert from "./Alert";
 
 const DEFAULT_FORM_DATA = {
   username: "",
@@ -107,11 +108,8 @@ function SignUpForm({ signUp, signUpErrs = [], userData = DEFAULT_FORM_DATA }) {
         </div>
 
         <button className="SignUpForm-signup-btn">SUBMIT</button>
-
-        {signUpErrs.length > 0 &&
-        <p>{signUpErrs.toString()}</p>}
-
       </form>
+      <Alert message={signUpErrs.toString()}/>
     </div>
 
   );
