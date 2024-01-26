@@ -46,7 +46,6 @@ function LoginForm({ login }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      console.log('Inside LoginForm handleSubmit', formData);
       await login(formData);
       navigate("/");
     } catch (err) {
@@ -66,6 +65,7 @@ function LoginForm({ login }) {
             onChange={handleChange}
             value={username}
             aria-label="Username"
+            required
           />
         </div>
         <div className="LoginForm-password">
@@ -78,6 +78,7 @@ function LoginForm({ login }) {
             onChange={handleChange}
             value={password}
             aria-label="Password"
+            required
           />
         </div>
         <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}

@@ -72,6 +72,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
             onChange={handleChange}
             value={username}
             aria-label="Username"
+            required
           />
         </div>
         <div className="SignUpForm-password">
@@ -84,6 +85,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
             onChange={handleChange}
             value={password}
             aria-label="Password"
+            required
           />
         </div>
         <div className="SignUpForm-firstName">
@@ -95,6 +97,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
             onChange={handleChange}
             value={firstName}
             aria-label="firstName"
+            required
           />
         </div>
         <div className="SignUpForm-lastName">
@@ -106,6 +109,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
             onChange={handleChange}
             value={lastName}
             aria-label="lastName"
+            required
           />
         </div>
         <div className="SignUpForm-email">
@@ -117,6 +121,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
             onChange={handleChange}
             value={email}
             aria-label="Email"
+            required
           />
         </div>
 

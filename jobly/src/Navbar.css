@@ -42,6 +42,7 @@ nav ul {
 }
 
 nav a, nav li a {
+  cursor: pointer;
   color: inherit;
   text-decoration: none;
   height: 100%;

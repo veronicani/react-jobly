@@ -22,7 +22,7 @@ import userContext from "./userContext";
  *  App -> RoutesList -> { Homepage, CompanyList, JobList, CompanyDetail }
 */
 
-function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
+function RoutesList({ signUp, login }) {
 
   const { user } = useContext(userContext);
 
@@ -50,8 +50,7 @@ function RoutesList({ signUp, login, logout, signUpErrs, loginErrs }) {
             <Route
               path="/signup"
               element={<SignUpForm
-                signUp={signUp}
-                logout={logout} />}
+                signUp={signUp} />}
             />
           </>
         }
