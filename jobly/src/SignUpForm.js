@@ -28,6 +28,8 @@ const DEFAULT_FORM_DATA = {
 function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
   const [formData, setFormData] = useState(userData);
   const [errs, setErrs] = useState([]);
+  console.log("SignUpForm: formData state: ", formData);
+  console.log("SignUpForm: errs state: ", errs);
 
   const { username, password, firstName, lastName, email } = formData;
 
@@ -42,26 +44,22 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
     }));
   }
 
-  /** Calls parent function and clears form */
+  /** Calls parent function.
+   * On success, redirects to homepage on success. 
+   * On failure, updates the state with the error messages.
+   **/
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       await signUp(formData);
       navigate("/");
     } catch (err) {
-      // TODO: here's where you can set errors to errs state
+      setErrs(err)
     }
-
-
-    // TODO: handle API err here? 2 of 2
-
-    setFormData(DEFAULT_FORM_DATA);
-    // TODO: not needed, goes away before clearing form data. GET RID OF IT^
   }
 
   return (
     <div className="SignUpForm-wrapper">
-      {/* TODO: if there are errors, show errors here */}
       <form className="SignUpForm" onSubmit={handleSubmit}>
 
         <div className="SignUpForm-username">
@@ -123,7 +121,9 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
 
         <button className="SignUpForm-signup-btn">SUBMIT</button>
       </form>
-      <Alert message={signUpErrs.toString()}/>
+  
+      {errs.map((err, i) => <Alert key={i} message={err}/>)}
+      
     </div>
 
   );
