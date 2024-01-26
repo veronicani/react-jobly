@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./LoginForm.css";
+import { useNavigate } from "react-router-dom";
 
+import Alert from "./Alert";
 
 const DEFAULT_FORM_DATA = {
   username: "",
@@ -18,10 +20,13 @@ const DEFAULT_FORM_DATA = {
  *  RoutesList -> LoginForm -> Alert
  */
 
-function LoginForm({ login }) {
+function LoginForm({ login, loginErrs }) {
+  console.log("loginErrs: ", loginErrs);
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
-
   const { username, password } = formData;
+
+  const navigate = useNavigate();
+  //TODO: if there is a user, navigate to the homepage
 
   /** Updates form values with user input */
   function handleChange(evt) {
@@ -66,6 +71,7 @@ function LoginForm({ login }) {
         </div>
         <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}
       </form>
+      <Alert message={loginErrs.toString()}/>
     </div>
 
   );
