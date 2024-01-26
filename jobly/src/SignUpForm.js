@@ -27,6 +27,7 @@ function SignUpForm({ signUp, signUpErrs = [], userData = DEFAULT_FORM_DATA }) {
   const { username, password, firstName, lastName, email } = formData;
 
   const navigate = useNavigate();
+  //TODO: if there is a user, navigate to the homepage
 
   /** Updates form values with user input */
   function handleChange(evt) {
@@ -42,9 +43,6 @@ function SignUpForm({ signUp, signUpErrs = [], userData = DEFAULT_FORM_DATA }) {
     evt.preventDefault();
     signUp(formData);
     setFormData(DEFAULT_FORM_DATA);
-    if (signUpErrs.length === 0) {
-      navigate("/");
-    }
   }
 
   return (
