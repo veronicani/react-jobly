@@ -90,26 +90,32 @@ class JoblyApi {
 
   /** Login user. Makes a request for a user token. Stores the
    * token to be used for future requests, and makes another request for
-   * the logged in user data. 
+   * the logged in user data.
    * Returns the firstName, lastName, and email of the user.
   */
 
   static async loginUser(username, password) {
     const data = { username, password };
 
+
     const res = await this.request(`auth/token`, data, "POST");
+
     JoblyApi.token = res.token;
+
+
     const { firstName, lastName, email } = await this.getUser(username);
+
     return { firstName, lastName, email };
   }
 
 
-  /** Gets user. Returns user data: 
+  /** Gets user. Returns user data:
    *  {username, firstName, lastName, email, isAdmin, applications: []} */
 
   static async getUser(username) {
-    const user = await this.request(`users/${username}`);
-    return user;
+
+    const res = await this.request(`users/${username}`);
+    return res.user;
   }
 
 }
