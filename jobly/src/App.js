@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import './App.css';
+import { useState, useEffect } from "react";
 
 import Navbar from "./Navbar";
 import RoutesList from "./RoutesList";
@@ -23,25 +24,34 @@ const DEFAULT_USER_DATA = {
  * App -> { Navbar, RoutesList }
  */
 function App() {
+
+  // FIXME: comment out for CSS edits
   const [userData, setUserData] = useState({DEFAULT_USER_DATA});
+
+  // FIXME: comment out for CSS edits
   // const [storedToken, setStoredToken] = useState("");
+
+
+
   const [signupLoginErrs, setSignupLoginErrs] = useState([]);
 
 
   // On every token state change, makes a new request to Jobly API to get new
   // user data. Updates the user data state to reflect new logged in user.
-  useEffect(function fetchNewUserOnTokenChange() {
-    async function fetchNewUser() {
-      const { user } = await JoblyApi.getUser(username);
-      setUserData(uData => ({
-        username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-      }));
-    }
-    fetchNewUser();
-  }, [storedToken]);
+
+  // FIXME: comment out for CSS edits
+  // useEffect(function fetchNewUserOnTokenChange() {
+  //   async function fetchNewUser() {
+  //     const { user } = await JoblyApi.getUser(username);
+  //     setUserData(uData => ({
+  //       username: user.username,
+  //       firstName: user.firstName,
+  //       lastName: user.lastName,
+  //       email: user.email,
+  //     }));
+  //   }
+  //   fetchNewUser();
+  // }, [storedToken]);
   // TODO: do this work in signup/login
 
   /** signUp: Registers the user with the SignUpForm data.
@@ -53,19 +63,24 @@ function App() {
    *
   */
 
-  async function signUp(formData) {
-    const { username, password, firstName, lastName, email } = formData;
-    const response = await JoblyApi
-      .registerUser(username, password, firstName, lastName, email);
 
-    if (response.token) {
-      setStoredToken(response.token);
-      // TODO: don't need previous state
-      // TODO: can fetch user data here and set state
-    } else {
-      setSignupLoginErrs(errs => [...errs, response.errors]);
-    }
-  }
+    // FIXME: comment out for CSS edits
+
+  // async function signUp(formData) {
+  //   const { username, password, firstName, lastName, email } = formData;
+  //   const response = await JoblyApi
+  //     .registerUser(username, password, firstName, lastName, email);
+
+  //   if (response.token) {
+  //     setStoredToken(response.token);
+  //     // TODO: don't need previous state
+  //     // TODO: can fetch user data here and set state
+  //   } else {
+  //     setSignupLoginErrs(errs => [...errs, response.errors]);
+  //   }
+  // }
+
+
 
   /** login: Logins the user with the LoginForm data.
    *  On success, receives token.
@@ -73,28 +88,38 @@ function App() {
    *  LoginForm.
   */
 
-  async function login(formData) {
-    const { username, password } = formData;
-    const response = await JoblyApi.loginUser(username, password);
 
-    if (response.token) {
-      // setStoredToken(currToken => currToken = response.token);
-      // JoblyApi.token = response.token;
-      // TODO: can store token in class instead of keeping it in state
 
-      // if token is good, get user details here
+    // FIXME: comment out for CSS edits
 
-    } else {
-      setSignupLoginErrs(errs => [...errs, response.errors]);
-    }
-  }
+  // async function login(formData) {
+  //   const { username, password } = formData;
+  //   const response = await JoblyApi.loginUser(username, password);
+
+  //   if (response.token) {
+  //     // setStoredToken(currToken => currToken = response.token);
+  //     // JoblyApi.token = response.token;
+  //     // TODO: can store token in class instead of keeping it in state
+
+  //     // if token is good, get user details here
+
+  //   } else {
+  //     setSignupLoginErrs(errs => [...errs, response.errors]);
+  //   }
+  // }
 
 
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <RoutesList handleSignUp={signUp} handleLogin={login}/>
+        {/* FIXME: temporary version */}
+        <RoutesList />
+
+
+
+        {/* // FIXME: comment out for CSS edits */}
+        {/* <RoutesList handleSignUp={signUp} handleLogin={login}/> */}
       </BrowserRouter>
     </div>
   );
