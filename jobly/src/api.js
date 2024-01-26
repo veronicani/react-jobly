@@ -75,15 +75,22 @@ class JoblyApi {
   }
 
 
-  /** Registers user with form data and stores token in API
+  /** Registers user with form data --
+   *    On success, stores response token in API and returns the token.
+   *    On failure, returns the response error messages.
    *
    *  formData: { username, password, firstName, lastName, email }
    */
 
   static async registerUser(username, password, firstName, lastName, email) {
-    const res = await this.request(`auth/register`, formData, "POST");
-    token = res.token;
-    return res.token;
+    const data = {username, password, firstName, lastName, email};
+    try {
+      const res = await this.request(`auth/register`, data, "POST");
+      token = res.token;
+      return { token };
+    } catch (err) {
+      return { errors: [...res.error.message] };
+    }
   }
 
 
