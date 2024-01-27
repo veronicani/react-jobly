@@ -28,23 +28,23 @@ function App() {
   const [userData, setUserData] = useState({ DEFAULT_USER_DATA });
   console.log("App userData state: ", userData);
 
-  useEffect(function getUserFromLocalStorageOnMount() {
+  useEffect(function getLoginFromLocalStorageOnMount() {
     console.log("App useEffect for local storage");
-    async function getStoredUser() {
+    async function getStoredLogin() {
       const username = localStorage.getItem("username");
-      const password = localStorage.getItem("password");
-      console.log("localStorage username + pw: ", username, password);
+      const token = localStorage.getItem("token");
+      console.log("localStorage username + token: ", username, token);
 
-      try {
-        await login({ username, password });
-      }
-      catch (err) {
-        console.log("err: ", err)
-      }
+     JoblyApi.token = token;
+     try {
+      const user = await JoblyApi.getUser(username);
+      setUserData(user);
+     } catch (err) {
+      console.log(err);
+     }
     }
-    getStoredUser();
+    getStoredLogin();
   }, []);
-
 
   /** signUp: Registers the user with the SignUpForm data.
    * Stores user's username, first name, last name, and email in userData.
@@ -55,7 +55,7 @@ function App() {
 
     const userData = await JoblyApi.getUser(username);
     localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
+    localStorage.setItem("token", token);
 
     setUserData({
       username: userData.username,
@@ -74,7 +74,7 @@ function App() {
 
       const userData = await JoblyApi.getUser(username);
       localStorage.setItem("username", username);
-      localStorage.setItem("password", password);
+      localStorage.setItem("token", token);
 
     setUserData({
       username: userData.username,
@@ -89,6 +89,13 @@ function App() {
   function logout() {
     localStorage.clear();
     setUserData(DEFAULT_USER_DATA);
+  }
+
+  /** updateUserProfile: 
+   * 
+  */
+  async function updateUserProfile() {
+    //TODO: implement!
   }
 
 
