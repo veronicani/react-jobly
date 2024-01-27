@@ -1,14 +1,7 @@
-import { useState } from "react";
-
+import userContext from "./userContext";
+import { useState, useContext } from "react";
 import "./ProfileForm.css";
-
-
-const DEFAULT_FORM_DATA = {
-  username: "GET USERNAME FROM CONTEXT",
-  firstName: "GET FIRSTNAME FROM CONTEXT",
-  lastName: "GET LASTNAME FROM CONTEXT",
-  email: "GET EMAIL FROM CONTEXT"
-};
+import Alert from "./Alert";
 
 /** SignUpForm: Registers user.
  *
@@ -17,12 +10,23 @@ const DEFAULT_FORM_DATA = {
  *
  *  State:
  *  - formData
+ *  - errs: errors if problems updating profile.
  *
  *  RoutesList -> SignUpForm -> Alert
  */
 
 function ProfileForm({ updateUserProfile }) {
-  const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
+  const [errs, setErrs] = useState([]);
+  const { user } = useContext(userContext);
+
+  const initialFormData = {
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const { username, firstName, lastName, email } = formData;
 
@@ -35,11 +39,15 @@ function ProfileForm({ updateUserProfile }) {
     }));
   }
 
-  /** Calls parent function and clears form */
-  function handleSubmit(evt) {
+  /** Calls parent function */
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    updateUserProfile(formData);
-    setFormData(DEFAULT_FORM_DATA);
+    try {
+      await updateUserProfile(formData);
+    } catch (err) {
+      console.log(err);
+      setErrs(err);
+    }
   }
 
   return (
@@ -90,6 +98,9 @@ function ProfileForm({ updateUserProfile }) {
         <button className="ProfileForm-save-btn">Save Changes</button>
 
       </form>
+
+      {errs.map((err, i) => <Alert key={i} message={err}/>)}
+
     </div>
 
   );
