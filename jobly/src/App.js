@@ -28,18 +28,38 @@ function App() {
   const [userData, setUserData] = useState({ DEFAULT_USER_DATA });
   console.log("App userData state: ", userData);
 
+  useEffect(function getUserFromLocalStorageOnMount() {
+    console.log("App useEffect for local storage");
+    async function getUser() {
+      const userData = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
+      JoblyApi.token = token;
+      console.log('This is JoblyApi.token: ', token);
+      if (!userData) return false;
+      const currentUser = await JoblyApi.getUser(userData.username);
+      setUserData(currentUser);
+    }
+    getUser();
+  }, []);
+
+
   /** signUp: Registers the user with the SignUpForm data.
    * Stores user's username, first name, last name, and email in userData.
    */
-  async function signUp({username, password, firstName, lastName, email}) {
-    await JoblyApi
+  async function signUp({ username, password, firstName, lastName, email }) {
+    const token = await JoblyApi
       .registerUser(username, password, firstName, lastName, email);
-  //TODO: should set info from API response instead
+
+    const userData = await JoblyApi.getUser(username);
+    localStorage.setItem("user", userData);
+    localStorage.setItem("token", token);
+
+    //TODO: should set info from API response instead
     setUserData({
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
+      username: userData.username,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
     });
   }
 
@@ -47,22 +67,26 @@ function App() {
    *  Stores user's username, first name, last name, and email in userData.
    *
   */
-  async function login({username, password}) {
+  async function login({ username, password }) {
     //TODO: use username from API login resp
-    const { firstName, lastName, email } = (
-      await JoblyApi.loginUser(username, password));
+    const token = await JoblyApi.loginUser(username, password);
+
+      const userData = await JoblyApi.getUser(username);
+      localStorage.setItem("user", userData);
+      localStorage.setItem("token", token);
 
     setUserData({
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
+      username: userData.username,
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
     });
   }
 
   /** logout: Resets userData to default. */
 
   function logout() {
+    localStorage.clear();
     setUserData(DEFAULT_USER_DATA);
   }
 

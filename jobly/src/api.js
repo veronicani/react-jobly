@@ -83,7 +83,7 @@ class JoblyApi {
     const data = { username, password, firstName, lastName, email };
     const res = await this.request(`auth/register`, data, "POST");
     JoblyApi.token = res.token;
-    //TODO:return confirm, or if using getUser, return user vals
+    return JoblyApi.token;
   }
 
 
@@ -95,17 +95,9 @@ class JoblyApi {
 
   static async loginUser(username, password) {
     const data = { username, password };
-
-
     const res = await this.request(`auth/token`, data, "POST");
-
     JoblyApi.token = res.token;
-
-
-    const { firstName, lastName, email } = await this.getUser(username);
-    //TODO: either also use this in registerUser, or handle in App
-
-    return { firstName, lastName, email };
+    return JoblyApi.token;
   }
 
 
@@ -113,7 +105,6 @@ class JoblyApi {
    *  {username, firstName, lastName, email, isAdmin, applications: []} */
 
   static async getUser(username) {
-
     const res = await this.request(`users/${username}`);
     return res.user;
   }
