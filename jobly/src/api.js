@@ -102,7 +102,8 @@ class JoblyApi {
     JoblyApi.token = res.token;
 
 
-    const { firstName, lastName, email } = await this.getUser(username); //TODO: either also use this in registerUser, or handle in App
+    const { firstName, lastName, email } = await this.getUser(username);
+    //TODO: either also use this in registerUser, or handle in App
 
     return { firstName, lastName, email };
   }

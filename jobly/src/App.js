@@ -31,9 +31,7 @@ function App() {
   /** signUp: Registers the user with the SignUpForm data.
    * Stores user's username, first name, last name, and email in userData.
    */
-  //TODO: destructure as params
-  async function signUp(formData) {
-    const { username, password, firstName, lastName, email } = formData;
+  async function signUp({username, password, firstName, lastName, email}) {
     await JoblyApi
       .registerUser(username, password, firstName, lastName, email);
   //TODO: should set info from API response instead
@@ -49,9 +47,7 @@ function App() {
    *  Stores user's username, first name, last name, and email in userData.
    *
   */
-//TODO: destructure params
-  async function login(formData) {
-    const { username, password } = formData;
+  async function login({username, password}) {
     //TODO: use username from API login resp
     const { firstName, lastName, email } = (
       await JoblyApi.loginUser(username, password));
