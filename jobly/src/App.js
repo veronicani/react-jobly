@@ -30,16 +30,19 @@ function App() {
 
   useEffect(function getUserFromLocalStorageOnMount() {
     console.log("App useEffect for local storage");
-    async function getUser() {
-      const userData = localStorage.getItem("user");
-      const token = localStorage.getItem("token");
-      JoblyApi.token = token;
-      console.log('This is JoblyApi.token: ', token);
-      if (!userData) return false;
-      const currentUser = await JoblyApi.getUser(userData.username);
-      setUserData(currentUser);
+    async function getStoredUser() {
+      const username = localStorage.getItem("username");
+      const password = localStorage.getItem("password");
+      console.log("localStorage username + pw: ", username, password);
+
+      try {
+        await login({ username, password });
+      }
+      catch (err) {
+        console.log("err: ", err)
+      }
     }
-    getUser();
+    getStoredUser();
   }, []);
 
 
@@ -51,10 +54,9 @@ function App() {
       .registerUser(username, password, firstName, lastName, email);
 
     const userData = await JoblyApi.getUser(username);
-    localStorage.setItem("user", userData);
-    localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
 
-    //TODO: should set info from API response instead
     setUserData({
       username: userData.username,
       firstName: userData.firstName,
@@ -68,12 +70,11 @@ function App() {
    *
   */
   async function login({ username, password }) {
-    //TODO: use username from API login resp
     const token = await JoblyApi.loginUser(username, password);
 
       const userData = await JoblyApi.getUser(username);
-      localStorage.setItem("user", userData);
-      localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
 
     setUserData({
       username: userData.username,
