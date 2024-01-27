@@ -52,7 +52,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
       await signUp(formData);
       navigate("/");
     } catch (err) {
-      setErrs(err)
+      setErrs(err);
     }
   }
 
