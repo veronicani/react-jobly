@@ -4,11 +4,9 @@ import { useState, useEffect } from "react";
 
 import userContext from "./userContext";
 
-
 import Navbar from "./Navbar";
 import RoutesList from "./RoutesList";
 
-import LoginForm from "./LoginForm";
 import JoblyApi from "./api";
 
 const DEFAULT_USER_DATA = {
@@ -22,24 +20,23 @@ const DEFAULT_USER_DATA = {
  *
  * Props: none
  *
- * State: none
+ * State: userData
  *
  * App -> { Navbar, RoutesList }
  */
 function App() {
   const [userData, setUserData] = useState({ DEFAULT_USER_DATA });
-
   console.log("App userData state: ", userData);
 
   /** signUp: Registers the user with the SignUpForm data.
    * Stores user's username, first name, last name, and email in userData.
    */
-
+  //TODO: destructure as params
   async function signUp(formData) {
     const { username, password, firstName, lastName, email } = formData;
     await JoblyApi
       .registerUser(username, password, firstName, lastName, email);
-
+  //TODO: should set info from API response instead
     setUserData({
       username: username,
       firstName: firstName,
@@ -52,18 +49,12 @@ function App() {
    *  Stores user's username, first name, last name, and email in userData.
    *
   */
-
+//TODO: destructure params
   async function login(formData) {
-
-
     const { username, password } = formData;
-    console.log('top of login fn, username, password: ', username, password)
-
-
+    //TODO: use username from API login resp
     const { firstName, lastName, email } = (
       await JoblyApi.loginUser(username, password));
-
-    console.log("After JoblyApi login fn: ", firstName, lastName, email);
 
     setUserData({
       username: username,
@@ -88,7 +79,6 @@ function App() {
           <RoutesList
             signUp={signUp}
             login={login}
-            logout={logout}
           />
         </userContext.Provider>
       </BrowserRouter>

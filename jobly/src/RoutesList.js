@@ -23,9 +23,7 @@ import userContext from "./userContext";
 */
 
 function RoutesList({ signUp, login }) {
-
   const { user } = useContext(userContext);
-
   const { username } = user;
 
   return (
@@ -62,4 +60,4 @@ function RoutesList({ signUp, login }) {
 }
 
 
-export default RoutesList;;;
+export default RoutesList;

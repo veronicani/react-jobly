@@ -12,9 +12,7 @@ class JoblyApi {
   // Remember, the backend needs to be authorized with a token
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
-  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  static token = "";
 
   static async request(endpoint, data = {}, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
@@ -75,16 +73,17 @@ class JoblyApi {
   }
 
 
-  /** Registers user with form data --
+  /** Registers user.
    *    Makes a request for a user token and stores the token.
    *
-   *  formData: { username, password, firstName, lastName, email }
+   *  Input:  username, password, firstName, lastName, email
    */
 
   static async registerUser(username, password, firstName, lastName, email) {
     const data = { username, password, firstName, lastName, email };
     const res = await this.request(`auth/register`, data, "POST");
     JoblyApi.token = res.token;
+    //TODO:return confirm, or if using getUser, return user vals
   }
 
 
@@ -103,7 +102,7 @@ class JoblyApi {
     JoblyApi.token = res.token;
 
 
-    const { firstName, lastName, email } = await this.getUser(username);
+    const { firstName, lastName, email } = await this.getUser(username); //TODO: either also use this in registerUser, or handle in App
 
     return { firstName, lastName, email };
   }

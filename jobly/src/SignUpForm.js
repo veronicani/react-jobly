@@ -3,9 +3,6 @@ import "./SignUpForm.css";
 import { useNavigate } from "react-router-dom";
 import Alert from "./Alert";
 
-import { useContext } from "react";
-import userContext from "./userContext";
-
 const DEFAULT_FORM_DATA = {
   username: "",
   password: "",
@@ -22,7 +19,7 @@ const DEFAULT_FORM_DATA = {
  *
  *  State:
  *  - formData
- *  - errs
+ *  - errs: error messages if problems signing up
  *
  *  RoutesList -> SignUpForm -> Alert
  */
@@ -33,8 +30,6 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
 
   const { username, password, firstName, lastName, email } = formData;
 
-  const navigate = useNavigate();
-
   /** Updates form values with user input */
   function handleChange(evt) {
     const field = evt.target;
@@ -43,6 +38,8 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
       [field.name]: field.value
     }));
   }
+
+  const navigate = useNavigate();
 
   /** Calls parent function.
    * On success, redirects to homepage.
