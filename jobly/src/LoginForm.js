@@ -83,7 +83,7 @@ function LoginForm({ login }) {
             required
           />
         </div>
-        <button className="LoginForm-login-btn">SUBMIT</button> {/* test click */}
+        <button className="LoginForm-login-btn">SUBMIT</button>
       </form>
 
       {errs.map((err, i) => <Alert key={i} message={err} />)}

@@ -42,12 +42,13 @@ function ProfileForm({ updateUserProfile }) {
   /** Calls parent function */
   async function handleSubmit(evt) {
     evt.preventDefault();
-    try {
-      await updateUserProfile(formData);
-    } catch (err) {
-      console.log(err);
-      setErrs(err);
-    }
+    console.log("TODO: implement updateUserProfile!");
+  //   try {
+  //     await updateUserProfile(formData);
+  //   } catch (errs) {
+  //     console.log(errs);
+  //     setErrs(errs);
+    // }
   }
 
   return (
@@ -99,7 +100,7 @@ function ProfileForm({ updateUserProfile }) {
 
       </form>
 
-      {errs.map((err, i) => <Alert key={i} message={err}/>)}
+      {errs && errs.map((err, i) => <Alert key={i} message={err}/>)}
 
     </div>
 

@@ -33,7 +33,6 @@ function App() {
     async function getStoredLogin() {
       const username = localStorage.getItem("username");
       const token = localStorage.getItem("token");
-      console.log("localStorage username + token: ", username, token);
 
      JoblyApi.token = token;
      try {
@@ -95,7 +94,7 @@ function App() {
    * 
   */
   async function updateUserProfile() {
-    //TODO: implement!
+    console.log('TODO: implement!');
   }
 
 
