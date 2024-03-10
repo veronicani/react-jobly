@@ -15,7 +15,7 @@
 <div align="center">
   <!-- To start a screen record on Mac: Shift + Cmd + 5 -->
   <a href="https://github.com/veronicani/react-jobly">
-    <img src="/public/jobly-demo.gif" alt="Demo recording">
+    <img src="jobly/public/jobly-demo.gif" alt="Demo recording">
   </a>
   
   <br />
@@ -82,6 +82,10 @@
 
 Jobly is a job board site where users can sign up, log in, browse companies, and apply to jobs. Company accounts are able to post new jobs.
 
+To test out the [demo](https://jobly.veronicani.dev), you can use:
+- username: `guest`
+- password: `password`
+
 This is the frontend application, bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It uses [Bootstrap](https://getbootstrap.com/) for styling, and is deployed through [Render](https://render.com/).
 
 It includes a RESTful API to interface with an Express [Jobly Backend](https://github.com/veronicani/express-jobly).
@@ -89,7 +93,7 @@ It includes a RESTful API to interface with an Express [Jobly Backend](https://g
 Features to the frontend and backend were implemented as a project in the [Rithm School](https://www.rithmschool.com/) curriculum.
 
 ### Project Architecture & Tooling
-![Component diagram](/public/component-diagram.png?raw=true)
+![Component diagram](jobly/public/component-diagram.png?raw=true)
 
 Topics explored in this project:
 
@@ -120,7 +124,6 @@ To avoid retyping too much info. Do a search and replace with your text editor f
 
 Front-end:
 * ![React][React]
-* ![Bootstrap][Bootstrap]
 * ![Render][Render]
 
 Back-end:
