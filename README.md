@@ -124,7 +124,7 @@ To avoid retyping too much info. Do a search and replace with your text editor f
 
 Front-end:
 * ![React][React]
-* ![Render][Render]
+* ![Render](https://img.shields.io/badge/Render-6A00C9.svg?style=for-the-badge&logo=render&logoColor=white)
 
 Back-end:
 * ![Node.js][Node.js]
@@ -141,7 +141,7 @@ Back-end:
 
 To get a local copy up and running, please follow these steps.
 
-1. Follow the instructions for cloning and setting up the [backend repo](https://github.com/veronicani/jobly-flask).
+1. Follow the instructions for cloning and setting up the [complete backend repo](https://github.com/veronicani/rithm-jobly-backend) provided by Rithm School.
 2. In a new terminal, clone the frontend repo.
    ```sh
    git clone https://github.com/veronicani/react-jobly.git
@@ -179,7 +179,7 @@ Veronica Ni - [veronicani.dev](https://veronicani.dev) - hello.veronicani@gmail.
 
 Project Front End Link: [https://github.com/veronicani/react-jobly](https://github.com/veronicani/react-jobly)
 
-Project Back End Link: [https://github.com/veronicani/jobly-flask](https://github.com/veronicani/jobly-flask)
+Project Back End Link: [https://github.com/veronicani/express-jobly](https://github.com/veronicani/express-jobly)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -191,6 +191,7 @@ This is a project I completed with Carl Molina and Crystal Tran at Rithm School.
 
 * Frontend co-authored with: [Carl Molina](https://github.com/carl-molina)
 * Backend co-authored with: [Crystal Tran](https://github.com/crystal-tran)
+* Complete backend repo provided by [Rithm School](https://www.rithmschool.com/).
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * [Img-shields](https://shields.io)
 * [simpleicons](https://simpleicons.org/)
