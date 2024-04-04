@@ -99,15 +99,15 @@ function LoginForm({ login }) {
                   required
                 />
               </div>
+
+              {errs.map((err, i) => <Alert key={i} message={err} />)}
+
               <div className="d-grid">
                 <button className="LoginForm-login-btn btn btn-primary">
                   SUBMIT
                 </button>
               </div>
             </form>
-
-            {errs.map((err, i) => <Alert key={i} message={err} />)}
-
           </div>
         </div>
       </div>

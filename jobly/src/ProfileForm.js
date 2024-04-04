@@ -120,6 +120,9 @@ function ProfileForm({ updateUserProfile }) {
                 aria-label="Email"
               />
             </div>
+
+            {errs && errs.map((err, i) => <Alert key={i} message={err} />)}
+            
             <div className="d-grid">
               <button
                 className="ProfileForm-save-btn btn btn-primary">
@@ -127,9 +130,6 @@ function ProfileForm({ updateUserProfile }) {
               </button>
             </div>
           </div>
-          
-          {errs && errs.map((err, i) => <Alert key={i} message={err} />)}
-        
         </div>
       </form>
     </div>

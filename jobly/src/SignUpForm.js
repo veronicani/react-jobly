@@ -155,7 +155,9 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
                 required
               />
             </div>
+            
             {errs.map((err, i) => <Alert key={i} message={err} />)}
+            
             <div className="d-grid">
             <button className="SignUpForm-signup-btn btn btn-primary">
               SUBMIT
