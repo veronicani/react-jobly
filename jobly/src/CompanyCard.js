@@ -12,8 +12,7 @@ import "./CompanyCard.css";
  */
 
 function CompanyCard({ company }) {
-  // console.log("CompanyCard input: ", company);
-  const { handle, name, description, numEmployees, logoUrl } = company;
+  const { handle, name, description, logoUrl } = company;
 
   return (
     <div className="CompanyCard">
