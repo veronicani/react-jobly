@@ -64,7 +64,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
         <div className="card p-2">
           <h3>Signup</h3> 
           <div className="card-body">
-            <div className="SignUpForm-username form-group mb-3">
+            <div className="SignUpForm-username mb-3">
               <label
                 className="form-label float-start"
                 htmlFor="SignUpForm-input-username"
@@ -155,15 +155,13 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
                 required
               />
             </div>
+            {errs.map((err, i) => <Alert key={i} message={err} />)}
             <div className="d-grid">
             <button className="SignUpForm-signup-btn btn btn-primary">
               SUBMIT
             </button>
             </div>
           </div>
-
-          {errs.map((err, i) => <Alert key={i} message={err} />)}
-          
         </div>
       </form>
     </div>
