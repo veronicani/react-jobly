@@ -27,7 +27,7 @@ function RoutesList({ signUp, login }) {
   const { username } = user;
 
   return (
-    <div className="RoutesList container h-100">
+    <div className="RoutesList container h-100 my-auto">
       <Routes>
         <Route path="/" element={<Homepage />} />
 
