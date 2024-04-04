@@ -9,9 +9,9 @@
   }
 }
 
+/* commenting out to find another way to persist bg image */
 
-
-.LoginForm-wrapper {
+/* .LoginForm-wrapper {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -19,9 +19,9 @@
   justify-content: center;
   position: relative;
   color: white;
-}
+} */
 /* https://coder-coder.com/background-image-opacity/ */
-.LoginForm-wrapper::before {
+/* .LoginForm-wrapper::before {
   content: "";
   height: 100%;
   background-image: url("https://static.vecteezy.com/system/resources/previews/016/474/827/original/business-and-work-seamless-pattern-png.png");
@@ -33,8 +33,8 @@
   left: 0;
   opacity: .35;
   z-index: -1;
-}
+} */
 
-.LoginForm {
+.LoginForm-container {
   animation: slideIn 0.5s ease;
 }

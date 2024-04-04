@@ -99,7 +99,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App d-flex flex-column vh-100">
       <BrowserRouter>
         <userContext.Provider value={{ user: userData }}>
           <Navbar logout={logout} />

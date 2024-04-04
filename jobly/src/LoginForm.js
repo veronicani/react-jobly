@@ -56,40 +56,56 @@ function LoginForm({ login }) {
   }
 
   return (
-    <div className="LoginForm-wrapper">
-      <form className="LoginForm" onSubmit={handleSubmit}>
-        <div className="LoginForm-username">
-          <label htmlFor="LoginForm-input-username">Username: </label>
-          <input
-            id="LoginForm-input-username"
-            name="username"
-            placeholder="Username"
-            onChange={handleChange}
-            value={username}
-            aria-label="Username"
-            required
-          />
-        </div>
-        <div className="LoginForm-password">
-          <label htmlFor="LoginForm-input-password">Password: </label>
-          <input
-            type="password"
-            id="LoginForm-input-password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={password}
-            aria-label="Password"
-            required
-          />
-        </div>
-        <button className="LoginForm-login-btn">SUBMIT</button>
-      </form>
+    <div className="LoginForm-wrapper row h-100">
+      <div className="LoginForm-container col-12 col-md-6 mx-auto my-auto">
+        <div className="card p-2">
+          <h3>Login</h3>
+          <div className="card-body">
+            <form className="LoginForm" onSubmit={handleSubmit}>
+              <div className="LoginForm-username mb-3">
+                <label htmlFor="LoginForm-input-username form-label">
+                  Username
+                </label>
+                <input
+                  className="form-control"
+                  id="LoginForm-input-username"
+                  name="username"
+                  placeholder="Username"
+                  onChange={handleChange}
+                  value={username}
+                  aria-label="Username"
+                  required
+                />
+              </div>
+              <div className="LoginForm-password mb-3">
+                <label htmlFor="LoginForm-input-password form-label">
+                  Password
+                </label>
+                <input
+                  className="form-control"
+                  type="password"
+                  id="LoginForm-input-password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={handleChange}
+                  value={password}
+                  aria-label="Password"
+                  required
+                />
+              </div>
+              <div className="d-grid">
+                <button className="LoginForm-login-btn btn btn-primary">
+                  SUBMIT
+                </button>
+              </div>
+            </form>
 
-      {errs.map((err, i) => <Alert key={i} message={err} />)}
+            {errs.map((err, i) => <Alert key={i} message={err} />)}
 
+          </div>
+        </div>
+      </div>
     </div>
-
   );
 }
 
