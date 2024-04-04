@@ -52,57 +52,88 @@ function ProfileForm({ updateUserProfile }) {
   }
 
   return (
-    <div className="ProfileForm-wrapper">
-      <form className="ProfileForm" onSubmit={handleSubmit}>
-
-        <div className="ProfileForm-username">
-          <label htmlFor="ProfileForm-input-username">Username: </label>
-          <input
-            id="ProfileForm-input-username"
-            name="username"
-            value={username}
-            aria-label="Username"
-            disabled
-          />
+    <div className="ProfileForm-wrapper row h-100">
+      <form
+        className="ProfileForm col-xs-12 col-sm-8 col-md-6 mx-auto my-auto"
+        onSubmit={handleSubmit}>
+        <div className="card p-2">
+          <h3>Update Profile</h3>
+          <div className="card-body">
+            <div className="ProfileForm-username mb-3">
+              <label
+                className="form-label float-start"
+                htmlFor="ProfileForm-input-username">
+                  Username:
+            </label>
+              
+              <input
+                className="form-control"
+                id="ProfileForm-input-username"
+                name="username"
+                value={username}
+                aria-label="Username"
+                disabled
+              />
+            </div>
+            <div className="ProfileForm-firstName mb-3">
+              <label
+                className="form-label float-start"
+                htmlFor="ProfileForm-input-firstName">
+                  First Name
+              </label>
+              <input
+                className="form-control"
+                id="ProfileForm-input-firstName"
+                name="firstName"
+                onChange={handleChange}
+                value={firstName}
+                aria-label="firstName"
+              />
+            </div>
+            <div className="ProfileForm-lastName mb-3">
+              <label
+                className="form-label float-start"
+                htmlFor="ProfileForm-input-lastName">
+                  Last Name
+              </label>
+              <input
+                className="form-control"
+                id="ProfileForm-input-lastName"
+                name="lastName"
+                onChange={handleChange}
+                value={lastName}
+                aria-label="lastName"
+              />
+            </div>
+            <div className="ProfileForm-email mb-3">
+              <label
+                className="form-label float-start"
+                htmlFor="ProfileForm-input-email">
+                  Email
+              </label>
+              <input
+                className="form-control"
+                id="ProfileForm-input-email"
+                name="email"
+                onChange={handleChange}
+                value={email}
+                aria-label="Email"
+              />
+            </div>
+            <div className="d-grid">
+              <button
+                className="ProfileForm-save-btn btn btn-primary">
+                Save Changes
+              </button>
+            </div>
+          </div>
+          
+          {errs && errs.map((err, i) => <Alert key={i} message={err} />)}
+        
         </div>
-        <div className="ProfileForm-firstName">
-          <label htmlFor="ProfileForm-input-firstName">First Name: </label>
-          <input
-            id="ProfileForm-input-firstName"
-            name="firstName"
-            onChange={handleChange}
-            value={firstName}
-            aria-label="firstName"
-          />
-        </div>
-        <div className="ProfileForm-lastName">
-          <label htmlFor="ProfileForm-input-lastName">Last Name: </label>
-          <input
-            id="ProfileForm-input-lastName"
-            name="lastName"
-            onChange={handleChange}
-            value={lastName}
-            aria-label="lastName"
-          />
-        </div>
-        <div className="ProfileForm-email">
-          <label htmlFor="ProfileForm-input-email">Email: </label>
-          <input
-            id="ProfileForm-input-email"
-            name="email"
-            onChange={handleChange}
-            value={email}
-            aria-label="Email"
-          />
-        </div>
-
-        <button className="ProfileForm-save-btn">Save Changes</button>
-
       </form>
-
-      {errs && errs.map((err, i) => <Alert key={i} message={err}/>)}
-
     </div>
+
 
   );
 }
