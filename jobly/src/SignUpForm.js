@@ -57,76 +57,115 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
   }
 
   return (
-    <div className="SignUpForm-wrapper">
-      <form className="SignUpForm" onSubmit={handleSubmit}>
+    <div className="SignUpForm-wrapper row h-100">
+      <form 
+        className="SignUpForm col-xs-12 col-sm-8 col-md-6 mx-auto my-auto"
+        onSubmit={handleSubmit}>
+        <div className="card p-2">
+          <h3>Signup</h3> 
+          <div className="card-body">
+            <div className="SignUpForm-username form-group mb-3">
+              <label
+                className="form-label float-start"
+                htmlFor="SignUpForm-input-username"
+              >
+                Username
+              </label>
+              <input
+                className="form-control"
+                id="SignUpForm-input-username"
+                name="username"
+                placeholder="Username"
+                onChange={handleChange}
+                value={username}
+                aria-label="Username"
+                required
+              />
+            </div>
+            <div className="SignUpForm-password mb-3">
+              <label 
+                className="form-label float-start"
+                htmlFor="SignUpForm-input-password"
+              >
+                Password 
+              </label>
+              <input
+                className="form-control"
+                type="password"
+                id="SignUpForm-input-password"
+                name="password"
+                placeholder="Password"
+                onChange={handleChange}
+                value={password}
+                aria-label="Password"
+                required
+              />
+            </div>
+            <div className="SignUpForm-firstName mb-3">
+              <label 
+                className="form-label float-start"
+                htmlFor="SignUpForm-input-firstName"
+              >
+                First Name
+              </label>
+              <input
+                className="form-control"
+                id="SignUpForm-input-firstName"
+                name="firstName"
+                placeholder="First Name"
+                onChange={handleChange}
+                value={firstName}
+                aria-label="firstName"
+                required
+              />
+            </div>
+            <div className="SignUpForm-lastName mb-3">
+              <label 
+                className="form-label float-start"
+                htmlFor="SignUpForm-input-lastName"
+              >
+                Last Name
+              </label>
+              <input
+                className="form-control"
+                id="SignUpForm-input-lastName"
+                name="lastName"
+                placeholder="Last Name"
+                onChange={handleChange}
+                value={lastName}
+                aria-label="lastName"
+                required
+              />
+            </div>
+            <div className="SignUpForm-email mb-3">
+              <label 
+                className="form-label float-start"
+                htmlFor="SignUpForm-input-email"
+              >
+                Email
+              </label>
+              <input
+                className="form-control"
+                id="SignUpForm-input-email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                value={email}
+                aria-label="Email"
+                required
+              />
+            </div>
+            <div className="d-grid">
+            <button className="SignUpForm-signup-btn btn btn-primary">
+              SUBMIT
+            </button>
+            </div>
+          </div>
 
-        <div className="SignUpForm-username">
-          <label htmlFor="SignUpForm-input-username">Username: </label>
-          <input
-            id="SignUpForm-input-username"
-            name="username"
-            placeholder="Username"
-            onChange={handleChange}
-            value={username}
-            aria-label="Username"
-            required
-          />
+          {errs.map((err, i) => <Alert key={i} message={err} />)}
+          
         </div>
-        <div className="SignUpForm-password">
-          <label htmlFor="SignUpForm-input-password">Password: </label>
-          <input
-            type="password"
-            id="SignUpForm-input-password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={password}
-            aria-label="Password"
-            required
-          />
-        </div>
-        <div className="SignUpForm-firstName">
-          <label htmlFor="SignUpForm-input-firstName">First Name: </label>
-          <input
-            id="SignUpForm-input-firstName"
-            name="firstName"
-            placeholder="First Name"
-            onChange={handleChange}
-            value={firstName}
-            aria-label="firstName"
-            required
-          />
-        </div>
-        <div className="SignUpForm-lastName">
-          <label htmlFor="SignUpForm-input-lastName">Last Name: </label>
-          <input
-            id="SignUpForm-input-lastName"
-            name="lastName"
-            placeholder="Last Name"
-            onChange={handleChange}
-            value={lastName}
-            aria-label="lastName"
-            required
-          />
-        </div>
-        <div className="SignUpForm-email">
-          <label htmlFor="SignUpForm-input-email">Email: </label>
-          <input
-            id="SignUpForm-input-email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            value={email}
-            aria-label="Email"
-            required
-          />
-        </div>
-
-        <button className="SignUpForm-signup-btn">SUBMIT</button>
       </form>
-
-      {errs.map((err, i) => <Alert key={i} message={err}/>)}
-
     </div>
 
   );
