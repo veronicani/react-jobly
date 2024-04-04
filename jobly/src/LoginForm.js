@@ -57,13 +57,16 @@ function LoginForm({ login }) {
 
   return (
     <div className="LoginForm-wrapper row h-100">
-      <div className="LoginForm-container col-12 col-md-6 mx-auto my-auto">
+      <div className="LoginForm-container col-xs-12 col-sm-8 col-md-6 mx-auto my-auto">
         <div className="card p-2">
           <h3>Login</h3>
           <div className="card-body">
             <form className="LoginForm" onSubmit={handleSubmit}>
               <div className="LoginForm-username mb-3">
-                <label htmlFor="LoginForm-input-username form-label">
+                <label 
+                  className="form-label float-start"
+                  htmlFor="LoginForm-input-username"
+                >
                   Username
                 </label>
                 <input
@@ -78,7 +81,10 @@ function LoginForm({ login }) {
                 />
               </div>
               <div className="LoginForm-password mb-3">
-                <label htmlFor="LoginForm-input-password form-label">
+                <label 
+                  className="form-label float-start"
+                  htmlFor="LoginForm-input-password"
+                >
                   Password
                 </label>
                 <input
