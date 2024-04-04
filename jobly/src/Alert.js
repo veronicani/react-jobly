@@ -3,7 +3,9 @@
 /** Shows a message for the user on form submit success / failure. */
 function Alert({ message }) {
   return (
-    <p>{message}</p>
+    <div className="alert alert-danger p-2" role="alert">
+      {message}
+    </div>
   )
 }
 
