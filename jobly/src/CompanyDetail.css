@@ -41,21 +41,6 @@
 }
 
 
-/* https://coder-coder.com/background-image-opacity/ */
-.CompanyDetail::before {
-  content: "";
-  height: 100%;
-  background-image: url("https://static.vecteezy.com/system/resources/previews/016/474/827/original/business-and-work-seamless-pattern-png.png");
-  background-size: 500px;
-  position: absolute;
-  top: 0px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: .35;
-  z-index: -1;
-}
-
 .SignUpForm {
   animation: slideIn 0.5s ease;
 }
