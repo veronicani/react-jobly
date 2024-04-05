@@ -1,0 +1,15 @@
+@import 'styles/_variables';
+
+button.btn { // need to override bs class
+  color: $primary-dark;
+  font-weight: 500;
+  border-radius: 16px;
+  
+  
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: shade-color($secondary, $btn-hover-bg-shade-amount);  
+  }
+}
+

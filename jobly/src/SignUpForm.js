@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./SignUpForm.css";
 import { useNavigate } from "react-router-dom";
 import Alert from "./Alert";
+import Button from "./Button";
 
 const DEFAULT_FORM_DATA = {
   username: "",
@@ -159,9 +160,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
             {errs.map((err, i) => <Alert key={i} message={err} />)}
             
             <div className="d-grid">
-            <button className="SignUpForm-signup-btn btn btn-primary">
-              SUBMIT
-            </button>
+            <Button classes="SignUpForm-signup-btn" label="Submit" />
             </div>
           </div>
         </div>

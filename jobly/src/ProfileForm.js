@@ -2,6 +2,7 @@ import userContext from "./userContext";
 import { useState, useContext } from "react";
 import "./ProfileForm.css";
 import Alert from "./Alert";
+import Button from "./Button";
 
 /** SignUpForm: Registers user.
  *
@@ -124,10 +125,7 @@ function ProfileForm({ updateUserProfile }) {
             {errs && errs.map((err, i) => <Alert key={i} message={err} />)}
             
             <div className="d-grid">
-              <button
-                className="ProfileForm-save-btn btn btn-primary">
-                Save Changes
-              </button>
+              <Button classes="ProfileForm-save-btn" label="Save Changes" />
             </div>
           </div>
         </div>

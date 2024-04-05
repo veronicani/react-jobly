@@ -3,6 +3,7 @@ import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
 
 import Alert from "./Alert";
+import Button from "./Button";
 
 const DEFAULT_FORM_DATA = {
   username: "",
@@ -103,9 +104,7 @@ function LoginForm({ login }) {
               {errs.map((err, i) => <Alert key={i} message={err} />)}
 
               <div className="d-grid">
-                <button className="LoginForm-login-btn btn btn-primary">
-                  SUBMIT
-                </button>
+                <Button classes="LoginForm-login-btn" label="Submit" />
               </div>
             </form>
           </div>
