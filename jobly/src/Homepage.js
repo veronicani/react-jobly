@@ -1,4 +1,5 @@
-import "./Homepage.css";
+import "./Homepage.scss";
+import hero from "./images/hero.jpeg"
 
 import { useContext } from "react";
 import userContext from "./userContext";
@@ -20,11 +21,18 @@ function Homepage() {
 
 
   return (
-    <div className="Homepage">
+    <div className="Homepage row">
+      <div className="col-6 mx-auto my-auto">
       <h1>Jobly</h1>
       <h2>All the jobs in one convenient place.</h2>
-      {username && <h3>Welcome, {username}! GET THOSE JOBS!!</h3>}
-      <p>Background Image from Vecteezy.</p>
+      <img 
+        className="Homepage-hero-img img-fluid my-2"
+        src={hero} 
+        alt="Hero illustration of office workers"
+      />
+      {username && <h4>Welcome, {username}! GET THOSE JOBS!!</h4>}
+      </div>
+      
     </div>
   );
 }
