@@ -56,7 +56,7 @@ function LoginForm({ login }) {
   }
 
   return (
-    <div className="LoginForm-wrapper row h-100">
+    <div className="LoginForm-wrapper row">
       <div className="LoginForm-container col-xs-12 col-sm-8 col-md-6 mx-auto my-auto">
         <div className="card p-2">
           <h3>Login</h3>

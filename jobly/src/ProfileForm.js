@@ -52,7 +52,7 @@ function ProfileForm({ updateUserProfile }) {
   }
 
   return (
-    <div className="ProfileForm-wrapper row h-100">
+    <div className="ProfileForm-wrapper row">
       <form
         className="ProfileForm col-xs-12 col-sm-8 col-md-6 mx-auto my-auto"
         onSubmit={handleSubmit}>

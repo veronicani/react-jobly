@@ -57,7 +57,7 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
   }
 
   return (
-    <div className="SignUpForm-wrapper row h-100">
+    <div className="SignUpForm-wrapper row">
       <form 
         className="SignUpForm col-xs-12 col-sm-8 col-md-6 mx-auto my-auto"
         onSubmit={handleSubmit}>
