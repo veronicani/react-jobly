@@ -21,7 +21,7 @@ function Navbar({ logout }) {
 
   return (
       <nav className="navbar navbar-expand-md sticky-top">
-        <div class="container-fluid">
+        <div className="container-fluid">
         <NavLink 
           to="/"
           className="Navbar-title navbar-brand"
@@ -29,10 +29,10 @@ function Navbar({ logout }) {
           <JoblyLogo className="me-1"/>
           Jobly
         </NavLink>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav ms-auto">
 
           {/* if user logged in, show this in navbar */}
