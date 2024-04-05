@@ -63,7 +63,7 @@ function ProfileForm({ updateUserProfile }) {
               <label
                 className="form-label float-start"
                 htmlFor="ProfileForm-input-username">
-                  Username:
+                  Username
             </label>
               
               <input
