@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import '/node_modules/bootstrap/scss/_functions.scss';
+@import "/node_modules/bootstrap/scss/variables";
+// @import "/node_modules/bootstrap/scss/variables-dark";
+@import "/node_modules/bootstrap/scss/maps";
+// @import "/node_modules/bootstrap/scss/mixins";
+// @import "/node_modules/bootstrap/scss/root";
+
+$primary: #768fdb;
+$primary-dark: #415388;
+
+$theme-colors: map-merge(
+  $theme-colors, 
+  (
+    "primary": $primary,
+  )
+);
+
+$font-family-sans-serif:  Rubik;
+
+@import "/node_modules/bootstrap";
