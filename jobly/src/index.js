@@ -1,3 +1,6 @@
+// need to import this for popper (dropdowns, modals, toggle, etc. )
+import "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
