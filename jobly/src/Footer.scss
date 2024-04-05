@@ -1,7 +1,8 @@
 @import 'styles/_variables';
 
 .Footer {
-  background-color: $white;
+  background-color: $gray-100;
+  z-index: 1; 
 
   .bi {
     font-size: 1.5rem;
