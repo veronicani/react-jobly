@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./SearchBar.css";
+import Button from "./Button";
 
 /** SearchBar component
  *
@@ -32,9 +33,20 @@ function SearchBar({ search, searchTerm }) {
   }
 
   return (
-    <form className="SearchBar" onSubmit={handleSubmit}>
-      <input value={term} onChange={handleChange} />
-      <button className="SearchBar-btn btn btn-primary">Search!</button>
+    <form 
+      className="SearchBar d-flex"
+      role="search"
+      onSubmit={handleSubmit}
+    >
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Enter search term"
+        aria-label="Search"
+        value={term}
+        onChange={handleChange} 
+      />
+      <Button classes="SearchBar-btn" label="Search!" />
     </form>
   )
 }
