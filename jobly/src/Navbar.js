@@ -3,6 +3,7 @@ import "./Navbar.css";
 
 import { useContext } from "react";
 import userContext from "./userContext";
+import { ReactComponent as JoblyLogo } from "./jobly-logo-color.svg";
 
 /** Navbar: component for Jobly app
  *
@@ -25,6 +26,7 @@ function Navbar({ logout }) {
           to="/"
           className="Navbar-title navbar-brand"
         >
+          <JoblyLogo className="me-1"/>
           Jobly
         </NavLink>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
