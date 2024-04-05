@@ -1,0 +1,10 @@
+@import 'styles/_variables';
+
+.Footer {
+  background-color: $white;
+
+  .bi {
+    font-size: 1.5rem;
+    color: $primary-dark;
+  }
+}

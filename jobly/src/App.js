@@ -6,6 +6,7 @@ import userContext from "./userContext";
 
 import Navbar from "./Navbar";
 import RoutesList from "./RoutesList";
+import Footer from './Footer';
 
 import JoblyApi from "./api";
 
@@ -26,10 +27,9 @@ const DEFAULT_USER_DATA = {
  */
 function App() {
   const [userData, setUserData] = useState({ DEFAULT_USER_DATA });
-  console.log("App userData state: ", userData);
 
   useEffect(function getLoginFromLocalStorageOnMount() {
-    console.log("App useEffect for local storage");
+    // console.log("App useEffect for local storage");
     async function getStoredLogin() {
       const username = localStorage.getItem("username");
       const token = localStorage.getItem("token");
@@ -107,6 +107,7 @@ function App() {
             signUp={signUp}
             login={login}
           />
+          <Footer />
         </userContext.Provider>
       </BrowserRouter>
     </div>
