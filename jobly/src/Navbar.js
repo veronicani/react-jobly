@@ -19,31 +19,41 @@ function Navbar({ logout }) {
   const { username } = user;
 
   return (
-    <div className="Navbar">
-      <nav>
-        <NavLink to="/" className="Navbar-title">Jobly</NavLink>
-        <ul>
+      <nav className="navbar navbar-expand-md sticky-top">
+        <div class="container-fluid">
+        <NavLink 
+          to="/"
+          className="Navbar-title navbar-brand"
+        >
+          Jobly
+        </NavLink>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav ms-auto">
 
           {/* if user logged in, show this in navbar */}
           {username &&
             <>
-              <li><NavLink to="/companies">Companies</NavLink></li>
-              <li><NavLink to="/jobs">Jobs</NavLink></li>
-              <li><NavLink to="/profile">{username}'s Profile</NavLink></li>
-              <li><a onClick={logout}>LOGOUT</a></li>
+              <li className="nav-item"><NavLink to="/companies">Companies</NavLink></li>
+              <li className="nav-item"><NavLink to="/jobs">Jobs</NavLink></li>
+              <li className="nav-item"><NavLink to="/profile">{username}'s Profile</NavLink></li>
+              <li className="nav-item"><a href="/logout" onClick={logout}>LOGOUT</a></li>
             </>
           }
 
           {/* if user not logged in, show this in navbar */}
           {!username &&
             <>
-              <li><NavLink to="/login">Login</NavLink></li>
-              <li><NavLink to="/signup">Signup</NavLink></li>
+              <li className="nav-item"><NavLink to="/login">Login</NavLink></li>
+              <li className="nav-item"><NavLink to="/signup">Signup</NavLink></li>
             </>
           }
         </ul>
+        </div>
+        </div>
       </nav>
-    </div>
   );
 }
 
