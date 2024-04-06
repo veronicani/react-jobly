@@ -16,9 +16,6 @@ import Button from "./Button";
 function SearchBar({ search, searchTerm }) {
   const [term, setTerm] = useState(searchTerm)
 
-  console.log('SearchBar searchTerm: ', term);
-
-
   /** Update form input */
   function handleChange(evt) {
     const field = evt.target;
@@ -34,7 +31,7 @@ function SearchBar({ search, searchTerm }) {
 
   return (
     <form 
-      className="SearchBar d-flex"
+      className="SearchBar d-flex py-4"
       role="search"
       onSubmit={handleSubmit}
     >
