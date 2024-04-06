@@ -41,7 +41,7 @@ function Navbar({ logout }) {
               <li className="nav-item"><NavLink to="/companies">Companies</NavLink></li>
               <li className="nav-item"><NavLink to="/jobs">Jobs</NavLink></li>
               <li className="nav-item"><NavLink to="/profile">{username}'s Profile</NavLink></li>
-              <li className="nav-item"><a href="/logout" onClick={logout}>LOGOUT</a></li>
+              <li className="nav-item"><a href="/logout" onClick={logout}>Logout</a></li>
             </>
           }
 
