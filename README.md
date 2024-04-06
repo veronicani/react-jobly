@@ -15,7 +15,7 @@
 <div align="center">
   <!-- To start a screen record on Mac: Shift + Cmd + 5 -->
   <a href="https://github.com/veronicani/react-jobly">
-    <img src="jobly/public/jobly-demo.gif" alt="Demo recording">
+    <img src="jobly/public/jobly-2-demo.gif" alt="Demo recording">
   </a>
   
   <br />
