@@ -3,13 +3,21 @@
 nav {
   background-color: $gray-100;
   color: $primary-dark;
+  
+  .Navbar-title {
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .Navbar-title,
+  .Navbar-title:focus, 
+  .Navbar-title:hover {
+    color: $primary-dark;
+  }
+
 }
 
-.Navbar-title {
-  font-size: 2rem;
-  font-weight: 700;
-  position: relative;
-}
 
 .Navbar-title::after {
   content: '👩🏽‍💼🧑🏻‍💼👨🏾‍💼';
@@ -54,5 +62,5 @@ nav li a.active {
 }
 
 nav li a:hover {
-  background-color: rgb(222, 222, 222);
+  background-color: $gray-200;
 }

@@ -24,7 +24,7 @@ function Navbar({ logout }) {
         <div className="container-fluid">
         <NavLink 
           to="/"
-          className="Navbar-title navbar-brand"
+          className="Navbar-title navbar-brand d-flex gap-1"
         >
           <JoblyLogo className="me-1"/>
           Jobly
