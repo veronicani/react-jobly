@@ -44,9 +44,6 @@
 }
 
 .CompanyList {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   position: relative;
-  color: white;
+  color:white;
 }

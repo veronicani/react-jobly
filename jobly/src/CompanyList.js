@@ -29,9 +29,6 @@ function CompanyList() {
     errors: null,
   });
 
-  console.log('CompanyList companyList state: ', companyList);
-  console.log('CompanyList searchTerm state: ', searchedTerm);
-
   // Makes a request to JoblyApi for a list of company data, everytime a
   // new search term is submitted from search bar. Sets the companyList
   // state to be the status of the data.
@@ -76,7 +73,7 @@ function CompanyList() {
   else if (companyList.errors) return <i>Server error. Please try again.</i>
 
   return (
-    <div className="CompanyList">
+    <div className="CompanyList mb-5 mx-auto col-lg-8">
       <SearchBar search={search} searchTerm={searchedTerm.term}/>
       {companyList.data.length === 0 &&
         <div className="CompanyList-none">

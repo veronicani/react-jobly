@@ -29,9 +29,6 @@ function JobList() {
     errors: null,
   });
 
-  console.log('JobList jobList state: ', jobList);
-  console.log('JobList searchTerm state: ', searchedTerm);
-
   // Makes a request to JoblyApi for a list of jobs data, everytime a
   // new search term is submitted from search bar. Sets the jobList
   // state to be the status of the data.
@@ -78,7 +75,7 @@ function JobList() {
   //it show the same state? or load all jobs?
 
   return (
-    <div className="JobList">
+    <div className="JobList mb-5 mx-auto col-lg-8">
       <SearchBar search={search} searchTerm={searchedTerm.term}/>
       {jobList.data.length === 0 &&
       <div className="JobList-none">
