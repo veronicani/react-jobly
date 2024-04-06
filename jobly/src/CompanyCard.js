@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./CompanyCard.css";
+import "./CompanyCard.scss";
 
 /** CompanyCard: presentational component, shows name of company, company logo,
  *  and description.
