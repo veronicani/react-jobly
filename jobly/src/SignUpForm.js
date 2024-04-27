@@ -160,7 +160,10 @@ function SignUpForm({ signUp, userData = DEFAULT_FORM_DATA }) {
             {errs.map((err, i) => <Alert key={i} message={err} />)}
             
             <div className="d-grid">
-            <Button classes="SignUpForm-signup-btn" label="Submit" />
+              <Button classes="SignUpForm-signup-btn" label="Submit" />
+            </div>
+            <div className="mt-1">
+              <small>💤 Server may take up to a minute to wake up!</small>
             </div>
           </div>
         </div>
