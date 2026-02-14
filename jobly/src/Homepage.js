@@ -3,8 +3,8 @@ import hero from "./images/hero.jpeg"
 
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import userContext from "./userContext";
-import Button from "./Button";
+import userContext from "./context/UserContext";
+import Button from "./components/common/Button/Button";
 
 /** Homepage: component for landing page on Jobly app.
  *

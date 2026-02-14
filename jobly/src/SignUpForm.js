@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./SignUpForm.css";
 import { useNavigate } from "react-router-dom";
-import Alert from "./Alert";
-import Button from "./Button";
+import Alert from "./components/common/Alert/Alert";
+import Button from "./components/common/Button/Button";
 
 const DEFAULT_FORM_DATA = {
   username: "",

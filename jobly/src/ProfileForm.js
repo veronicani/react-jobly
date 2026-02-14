@@ -1,8 +1,8 @@
-import userContext from "./userContext";
+import userContext from "./context/UserContext";
 import { useState, useContext } from "react";
 import "./ProfileForm.css";
-import Alert from "./Alert";
-import Button from "./Button";
+import Alert from "./components/common/Alert/Alert";
+import Button from "./components/common/Button/Button";
 
 /** SignUpForm: Registers user.
  *

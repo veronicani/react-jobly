@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import JobCardList from "./JobCardList";
-import SearchBar from "./SearchBar";
+import SearchBar from "./components/common/SearchBar/SearchBar";
 
 import JoblyApi from "./api";
 import "./JobList.css";

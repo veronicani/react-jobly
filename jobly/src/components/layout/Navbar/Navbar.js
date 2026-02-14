@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.scss";
 
 import { useContext } from "react";
-import userContext from "./userContext";
-import { ReactComponent as JoblyLogo } from "./jobly-logo-color.svg";
+import userContext from "../../../context/UserContext";
+import { ReactComponent as JoblyLogo } from "../../../jobly-logo-color.svg";
 
 /** Navbar: component for Jobly app
  *

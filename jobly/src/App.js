@@ -2,11 +2,11 @@ import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import { useState, useEffect } from "react";
 
-import userContext from "./userContext";
+import userContext from "./context/UserContext";
 
-import Navbar from "./Navbar";
+import Navbar from "./components/layout/Navbar/Navbar";
 import RoutesList from "./RoutesList";
-import Footer from './Footer';
+import Footer from './components/layout/Footer/Footer';
 
 import JoblyApi from "./api";
 
