@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-import JoblyApi from "./api";
-import CompanyCard from "./CompanyCard";
-import SearchBar from "./components/common/SearchBar/SearchBar";
+import JoblyApi from "src/api";
+import CompanyCard from "src/features/companies/CompanyCard/CompanyCard";
+import SearchBar from "src/components/common/SearchBar/SearchBar";
 
 import "./CompanyList.css";
 

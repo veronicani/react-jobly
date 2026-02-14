@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./SearchBar.css";
-import Button from "./Button";
+import Button from "src/components/common/Button/Button";
 
 /** SearchBar component
  *

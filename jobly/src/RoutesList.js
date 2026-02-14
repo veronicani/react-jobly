@@ -1,13 +1,13 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import SignUpForm from "./SignUpForm";
-import LoginForm from "./LoginForm";
-import ProfileForm from "./ProfileForm";
+import SignUpForm from "src/features/auth/SignUpForm/SignUpForm";
+import LoginForm from "src/features/auth/LoginForm/LoginForm";
+import ProfileForm from "src/features/auth/ProfileForm/ProfileForm";
 
 import Homepage from "./Homepage";
-import JobList from "./JobList";
-import CompanyList from "./CompanyList";
-import CompanyDetail from "./CompanyDetail";
+import JobList from "src/features/jobs/JobList/JobList";
+import CompanyList from "src/features/companies/CompanyList/CompanyList";
+import CompanyDetail from "src/features/companies/CompanyDetail/CompanyDetail";
 
 import { useContext } from "react";
 import userContext from "./context/UserContext";

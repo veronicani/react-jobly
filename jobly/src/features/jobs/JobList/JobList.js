@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import JobCardList from "./JobCardList";
-import SearchBar from "./components/common/SearchBar/SearchBar";
+import JobCardList from "src/features/jobs/JobCardList/JobCardList";
+import SearchBar from "src/components/common/SearchBar/SearchBar";
 
-import JoblyApi from "./api";
+import JoblyApi from "src/api";
 import "./JobList.css";
 
 /** JobList: Renders a list of jobs and the search bar. Makes API request to

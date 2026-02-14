@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import JoblyApi from "./api";
-import JobCardList from "./JobCardList";
+import JoblyApi from "src/api";
+import JobCardList from "src/features/jobs/JobCardList/JobCardList";
 import "./CompanyDetail.css";
 
 /** CompanyDetail: logical component for single company. Makes a request to

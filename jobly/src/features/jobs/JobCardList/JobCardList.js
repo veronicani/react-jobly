@@ -1,4 +1,4 @@
-import JobCard from "./JobCard";
+import JobCard from "src/features/jobs/JobCard/JobCard";
 
 /** JobCardList: Renders a list of job cards from filtered jobs.
  *
