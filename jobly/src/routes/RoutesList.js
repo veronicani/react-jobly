@@ -4,13 +4,13 @@ import SignUpForm from "src/features/auth/SignUpForm/SignUpForm";
 import LoginForm from "src/features/auth/LoginForm/LoginForm";
 import ProfileForm from "src/features/auth/ProfileForm/ProfileForm";
 
-import Homepage from "./Homepage";
+import Homepage from "src/pages/Homepage/Homepage";
 import JobList from "src/features/jobs/JobList/JobList";
 import CompanyList from "src/features/companies/CompanyList/CompanyList";
 import CompanyDetail from "src/features/companies/CompanyDetail/CompanyDetail";
 
 import { useContext } from "react";
-import userContext from "./context/UserContext";
+import userContext from "src/context/UserContext";
 
 
 /** RoutesList: list of routes for Jobly app.

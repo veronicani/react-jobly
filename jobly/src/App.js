@@ -2,13 +2,13 @@ import { BrowserRouter } from "react-router-dom";
 import './App.css';
 import { useState, useEffect } from "react";
 
-import userContext from "./context/UserContext";
+import userContext from "src/context/UserContext";
 
-import Navbar from "./components/layout/Navbar/Navbar";
-import RoutesList from "./RoutesList";
-import Footer from './components/layout/Footer/Footer';
+import Navbar from "src/components/layout/Navbar/Navbar";
+import RoutesList from "src/routes/RoutesList";
+import Footer from 'src/components/layout/Footer/Footer';
 
-import JoblyApi from "./api";
+import JoblyApi from "src/api";
 
 const DEFAULT_USER_DATA = {
   username: "",

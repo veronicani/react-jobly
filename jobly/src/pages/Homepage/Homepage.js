@@ -1,10 +1,10 @@
 import "./Homepage.scss";
-import hero from "./images/hero.jpeg"
+import hero from "src/images/hero.jpeg"
 
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import userContext from "./context/UserContext";
-import Button from "./components/common/Button/Button";
+import userContext from "src/context/UserContext";
+import Button from "src/components/common/Button/Button";
 
 /** Homepage: component for landing page on Jobly app.
  *
