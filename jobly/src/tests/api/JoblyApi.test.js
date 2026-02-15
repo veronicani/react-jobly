@@ -94,6 +94,51 @@ describe('JoblyApi', () => {
       expect(token).toBe(mockToken);
       expect(JoblyApi.token).toBe(mockToken);
     });
+
+    test('throws error on duplicate username', async () => {
+      fetchMock.post('path:/auth/register', {
+        body: { error: { message: 'Username already exists' } },
+        status: 400
+      });
+
+      await expect(
+        JoblyApi.registerUser('existing', 'pass123', 'John', 'Doe', 'john@test.com')
+      ).rejects.toEqual(['Username already exists']);
+    });
+
+    test('throws error on invalid email', async () => {
+      fetchMock.post('path:/auth/register', {
+        body: { error: { message: 'Invalid email format' } },
+        status: 400
+      });
+
+      await expect(
+        JoblyApi.registerUser('newuser', 'pass123', 'John', 'Doe', 'invalid-email')
+      ).rejects.toEqual(['Invalid email format']);
+    });
+    
+    test('handles multiple errors', async () => {
+      const err_msgs = ['Username already exists', 'Invalid email format'];
+      fetchMock.post('path:/auth/register', {
+        body: { error: { message: err_msgs } },
+        status: 400
+      });
+
+      await expect(
+        JoblyApi.registerUser('newuser', 'pass123', 'John', 'Doe', 'invalid-email')
+      ).rejects.toEqual(err_msgs);
+    });
+
+    test('handles server error on registration', async () => {
+      fetchMock.post('path:/auth/register', {
+        body: { error: { message: 'Server error' } },
+        status: 500
+      });
+
+      await expect(
+        JoblyApi.registerUser('user', 'pass', 'John', 'Doe', 'john@test.com')
+      ).rejects.toEqual(['Server error']);
+    });
   });
 
   describe('loginUser', () => {
@@ -107,6 +152,17 @@ describe('JoblyApi', () => {
       expect(token).toBe(mockToken);
       expect(JoblyApi.token).toBe(mockToken);
     });
+
+    test('throws error on invalid credentials', async () => {
+      fetchMock.post('path:/auth/token', {
+        body: { error: { message: 'Invalid username/password' } },
+        status: 401
+      });
+
+      await expect(JoblyApi.loginUser('baduser', 'wrongpass'))
+        .rejects.toEqual(['Invalid username/password']);
+    });
+
   });
 
   describe('getUser', () => {
