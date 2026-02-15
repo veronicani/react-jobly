@@ -1,6 +1,6 @@
 import fetchMock from '@fetch-mock/jest';
 import JoblyApi from 'src/api';
-import { mockCompanies, mockJobs, mockUser, mockToken } from '../setup/mockData';
+import { mockCompanies, mockJobs, mockUser, mockToken } from 'src/tests/setup/mockData';
 
 describe('JoblyApi', () => {
   beforeEach(() => {
