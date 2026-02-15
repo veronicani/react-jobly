@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import UserContext from 'src/context/UserContext';
 
 const mockUser = {
@@ -11,21 +11,21 @@ const mockUser = {
   applications: []
 };
 
-function AllProviders({ children, user = null }) {
+function AllProviders({ children, user = {}, initialEntries = ['/'] }) {
   return (
-    <BrowserRouter>
+    <MemoryRouter initialEntries={initialEntries}>
       <UserContext.Provider value={{ user }}>
         {children}
       </UserContext.Provider>
-    </BrowserRouter>
+    </MemoryRouter>
   );
 }
 
 const customRender = (ui, options = {}) => {
-  const { user, ...renderOptions } = options;
+  const { user, initialEntries, ...renderOptions } = options;
   return render(ui, {
     wrapper: ({ children }) => (
-      <AllProviders user={user}>{children}</AllProviders>
+      <AllProviders user={user} initialEntries={initialEntries}>{children}</AllProviders>
     ),
     ...renderOptions
   });
